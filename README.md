@@ -20,41 +20,41 @@
 
 ### ターゲットユーザ
 <行きつけのお店を持つ40代の会社員男性>
-・妻と子供二人の家庭を持つ。
-・企業の中間職として、挟まれて働いている中、自分だけの時間を作るために行きつけのお店がある。
-・失業の恐れが少ない正規雇用者である。
-・地域への関わりが多く、近所の人たちとのコミュニケーションをとることができている人である。
+・妻と子供二人の家庭を持つ。<br>
+・企業の中間職として、挟まれて働いている中、自分だけの時間を作るために行きつけのお店がある。<br>
+・失業の恐れが少ない正規雇用者である。<br>
+・地域への関わりが多く、近所の人たちとのコミュニケーションをとることができている人である。<br>
 
 <企業・個人事業主>
-・地域に根付いたお店
-・安定したリピート率を抱えていて、その大半が周辺住民である。
-・利用者の多い大手企業
+・地域に根付いたお店<br>
+・安定したリピート率を抱えていて、その大半が周辺住民である。<br>
+・利用者の多い大手企業<br>
 
 
 ### 主な利用シーン
-■　行きつけのお店を持つ30~40代の会社員男性
-<休憩時間に仕事終わりにいくお店の商品を事前に購入しておく>
-<長期間の行きつけのお店を利用できない時>
-<ただただ企業の支援をしたいとき>
-.
-.
+■　行きつけのお店を持つ30~40代の会社員男性<br>
+<休憩時間に仕事終わりにいくお店の商品を事前に購入しておく><br>
+<長期間の行きつけのお店を利用できない時><br>
+<ただただ企業の支援をしたいとき><br>
+<br>
+<br>
 ■　企業・個人事業主
-<期限つきのチケットを用意することで、サービス提供なしでも収益を得たい時>
-<国家規模の病むおえない理由で収益が上がらない時>
-<大方の注文数を計算しやすくして、フードロスの削減につなげたい。>
-.
-.
+<期限つきのチケットを用意することで、サービス提供なしでも収益を得たい時><br>
+<国家規模の病むおえない理由で収益が上がらない時><br>
+<大方の注文数を計算しやすくして、フードロスの削減につなげたい。><br>
+<br>
+<br>
 ## 設計書
 [ワイヤーフレーム]
 <ユーザー>
-<https://drive.google.com/file/d/19U6S8tLQ8KbgxeKy1az7O4AiiGupMKSo/view?usp=sharing>
+<https://drive.google.com/file/d/19U6S8tLQ8KbgxeKy1az7O4AiiGupMKSo/view?usp=sharing><br>
 <オーナー>
-<https://drive.google.com/file/d/1PwqX7OHy9elS7GsEwk2Oj-G-dbH0p4Ls/view?usp=sharing>
+<https://drive.google.com/file/d/1PwqX7OHy9elS7GsEwk2Oj-G-dbH0p4Ls/view?usp=sharing><br>
 <管理者>
-<https://drive.google.com/file/d/1XA2T5xprK88SWd5wZh0BVMYmg5AOmfHg/view?usp=sharing>
-.
+<https://drive.google.com/file/d/1XA2T5xprK88SWd5wZh0BVMYmg5AOmfHg/view?usp=sharing><br>
+<br>
 [ER図]
 <https://drive.google.com/file/d/1K3CRqOL75FfuPk43KVeVbUbTC8EcMF7Q/view?usp=sharing>
-.
+<br>
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1W6RBANVhSHiE3OyVB-N1FCx4EwuV6MLon3ut-vau_vA/edit?usp=sharing>
