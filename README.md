@@ -45,6 +45,16 @@
 .
 .
 ## 設計書
+[ワイヤーフレーム]
+<ユーザー>
+<https://drive.google.com/file/d/19U6S8tLQ8KbgxeKy1az7O4AiiGupMKSo/view?usp=sharing>
+<オーナー>
+<https://drive.google.com/file/d/1PwqX7OHy9elS7GsEwk2Oj-G-dbH0p4Ls/view?usp=sharing>
+<管理者>
+<https://drive.google.com/file/d/1XA2T5xprK88SWd5wZh0BVMYmg5AOmfHg/view?usp=sharing>
+.
+[ER図]
+<https://drive.google.com/file/d/1K3CRqOL75FfuPk43KVeVbUbTC8EcMF7Q/view?usp=sharing>
 .
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1W6RBANVhSHiE3OyVB-N1FCx4EwuV6MLon3ut-vau_vA/edit?usp=sharing>
