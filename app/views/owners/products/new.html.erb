@@ -1,0 +1,33 @@
+<h2>新規登録</h2>
+    <%= form_for(@product, url: owners_products_path(@product)) do |f| %>
+
+    	<div>
+            <%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+        </div>
+        <div>
+            <%= f.attachment_field :image, placeholder: "" %>
+        </div>
+        <div>
+            <span>商品名</span>
+            <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div>
+            <span>商品説明</span>
+            <%= f.text_area :introduce, class:"form-control" %>
+        </div>
+        <div>
+            <span>ジャンル</span>
+            <!-- currrent_owner.idで登録されたジャンルのみ表示する -->
+            <%= f.collection_select :genre_id, Genre.where(owner_id: current_owner.id), :id, :name, include_blank: "選択して下さい" %>
+        </div>
+        <div>
+            <span>税抜き価格</span>
+            <%= f.text_field :price, class:"form-control" %>
+        </div>
+        <div>
+            <span>販売ステータス</span>
+				<%= f.radio_button  :product_status, false %><span>販売中</span>
+				<%= f.radio_button  :product_status, true %><span>販売停止</span>
+        </div>
+        <%= f.submit "新規登録"%>
+	<% end %>

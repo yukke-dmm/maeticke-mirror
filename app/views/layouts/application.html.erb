@@ -14,10 +14,14 @@
   <nav>
     <ul>
       <% if user_signed_in? %>
-        <li>ユーザー</li>
+        <li><%= current_user.name %></li>
+        <li><%= link_to "商品一覧", products_path %></li>
         <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif owner_signed_in? %>
-        <li>事業者</li>
+        <li><%= current_owner.name %></li>
+        <li><%= link_to "商品一覧", owners_products_path %></li>
+        <li><%= link_to "ジャンル一覧", owners_genres_path %></li>
+        <li><%= link_to "マイページ", owners_user_path(current_owner) %></li>
         <li><%= link_to "ログアウト", destroy_owner_session_path, method: :delete %></li>
       <% elsif admin_signed_in? %>
         <li>管理者</li>

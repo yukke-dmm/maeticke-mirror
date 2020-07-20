@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_19_081255) do
+ActiveRecord::Schema.define(version: 2020_07_20_040720) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 2020_07_19_081255) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.boolean "status"
+    t.integer "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "owner_products", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "owners", force: :cascade do |t|
@@ -42,6 +57,19 @@ ActiveRecord::Schema.define(version: 2020_07_19_081255) do
     t.string "phone_number"
     t.index ["email"], name: "index_owners_on_email", unique: true
     t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "introduce"
+    t.string "image_id"
+    t.integer "price"
+    t.integer "genre_id"
+    t.integer "owner_id"
+    t.boolean "product_status"
+    t.boolean "delete_flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
