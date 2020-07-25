@@ -1,0 +1,15 @@
+<h1>OrderDetails#show</h1>
+<p>Find me in app/views/order_details/show.html.erb</p>
+
+<p>商品名</p>
+	<%= @order_detail.product.name %>
+
+<%= form_for @order_detail,url: order_detail_path(@order_detail.id) do |f|%>
+
+	<% if @order_detail.ticket_count == 0 %>
+	    <p>使用不可</p>
+	<% else %>
+        <%= @order_detail.ticket_count %>
+	<%= f.submit '使用する', class: "btn-sm btn-success cart-btn"%>
+	<% end %>
+<% end %>

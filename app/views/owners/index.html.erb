@@ -1,0 +1,30 @@
+<h1>Owners#index</h1>
+<p>Find me in app/views/owners/index.html.erb</p>
+
+<table class="table table-borderless">
+	<thead class="thead-dark">
+		<tr>
+			<th>オーナーID</th>
+			<th>カテゴリー</th>
+			<th>店舗名</th>
+			<th>電話番号</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @owners.each do |owner| %>
+			<tr>
+				<td><%= owner.id %></td>
+				<td><%= owner.category.name %></td>
+				<td>
+                	<%= link_to owner_path(owner.id) do %>
+					<%= owner.name %>
+					<% end %>
+		    	</td>
+		    	<td><%= owner.phone_number %></td>
+            	</td>
+			</tr>
+		<% end %>
+	</tbody>
+
+</table>

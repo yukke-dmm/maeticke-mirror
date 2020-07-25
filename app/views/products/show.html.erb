@@ -1,39 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<h3>商品詳細</h3>
+  <%= attachment_image_tag @product, :image , :fill, 200, 150, fallback: "no_image.jpg", size: '200x150'%>
+  <p>商品名</p>
+    <%= @product.name %>
+  <p>商品説明</p>
+    <%= @product.introduce %>
+  <p>ジャンル</p>
+    <%= @product.genre.name %>
+  <p>税込価格</p>
+    <%= @product.price %>
+  <p>販売ステータス</p>
+    <% if @product.product_status == true %>
+            <p>販売停止</p>
+        <% else %>
+          <p>販売中</p>
+        <% end %>
 
-<p>
-  <strong>Introduce:</strong>
-  <%= @product.introduce %>
-</p>
+<% if user_signed_in? %>
+  <%= form_for :cart_item, url:cart_items_path, method: :post ,local: true do |f| %>
+    <%= f.select :count,(1..10).each{ |i| p [i] } ,includece_blank: ">>　個数選択"%>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "カートに入れる", class: 'btn btn-primary'%>
+  <% end %>
+<% end %>
 
-<p>
-  <strong>Image:</strong>
-  <%= @product.image_id %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= @product.genre_id %>
-</p>
-
-<p>
-  <strong>Product status:</strong>
-  <%= @product.product_status %>
-</p>
-
-<p>
-  <strong>Delete flag:</strong>
-  <%= @product.delete_flag %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
