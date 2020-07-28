@@ -1,48 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<div class="row">
+  <div class="col-md-9 col-sm-9 col-xs-9">
+    <h1>商品一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>商品名</th>
-      <th>店舗名</th>
-      <th>商品紹介</th>
-      <th>価格</th>
-      <th>ジャンル</th>
-      <th>販売状況</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td> <%= attachment_image_tag product, :image , :fill, 200, 150, fallback: "no_image.jpg", size: '200x150'%></td>
-        <td>
-          <%= link_to product_path(product) do %>
-            <%= product.name %>
-          <%end%>
-        </td>
-        <td>
-          <%= link_to owner_path(product.owner.id) do %>
-            <%= product.owner.name %>
-          <% end %>
-        </td>
-        <td><%= product.introduce %></td>
-        <td><%= product.price %></td>
-        <td><%= product.genre.name %></td>
-        <td><% if product.product_status == true %>
-              <p>販売停止</p>
-            <%else%>
-              <p>販売中</p>
-            <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+      <div class="flex">
+        <% @products.each do |product| %>
+          <div class="card">
+            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
+              <div class="card-body">
+                <span class="card-text">
+                  <%= link_to product_path(product) do %>
+                    <%= product.name %>(<%= product.genre.name %>)
+                  <%end%>
+                </span><br>
+                <span class="card-text">
+                  <%= link_to owner_path(product.owner.id) do %>
+                    <%= product.owner.name %>
+                  <% end %>
+                </span>
+                <span class="card-introduce">
+                  <p>　<%= product.introduce %></p>
+                </span>
+                <div class="card-price">
+                  <%= product.price %> 円　
+                      <% if product.product_status == true %>
+                            <span class="status2">販売停止</span>
+                          <%else%>
+                            <span class="status">販売中</span>
+                      <% end %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-3">
+    <h1>ソート</h1>
+  </div>
+</div>
 <br>
-
-

@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+a{
+	color:none;
+}
+.row{
+	background-color:skyblue;
+}
+
+/*スライドショー*/
+#container{
+	height: 350px;
+	background-size: cover;
+    background-position: center;
+}
+
+/*ヘッダー関連*/
+
+nav{
+	background-color: rgba( 233, 163, 38, 0.5);
+/* 背景色を半透明*/
+}
+nav.nav-bar{
+	margin-bottom:0px;
+}
+
+
+/*フッター関連*/
+footer{
+	background-color: gray;
+	color: white;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+	line-height:50px;
+}
+footer.a{
+	font-color:white;
+}
+
+/*ここからチケットのデザイン*/
+.flex{
+	display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card{
+    margin:5px;
+	padding:10px;
+	border: solid 1px gray;
+	width:180px;
+	height:270px;
+}
+.card-img-top{
+	border: solid 1px gray;
+}
+.card-body{
+	padding:5px 0;
+	height:130px;
+	background-color:pink;
+	position:relative;
+}
+.card-introduce > p{
+	font-size:5px;
+	line-height:10px;
+}
+.card-price{
+	position:absolute;
+	right:0px;
+    bottom:0px;
+}
+.status{
+	background-color:blue;
+	color:white;
+	padding:3px;
+	border-radius:3px;
+}
+.status2{
+	background-color:red;
+	color:white;
+	padding:3px;
+	border-radius:3px;
+}
+
+
+/*ここから商品詳細画面*/
+.product-show{
+	height:400px;
+	background-color:pink;
+}
+
+/*ここからオーナー一覧*/
+.owner-card{
+	padding: 20px;
+	border-bottom:solid 1px gray ;
+	background-color:pink;
+}
+.owner-image{
+	margin-right: 20px;
+}
+
+.owner-introduce{
+	height:140px;
+	width:100%;
+	background-color:lightgreen;
+	border-bottom: solid 1px gray;
+	border-top: solid 1px gray;
+}

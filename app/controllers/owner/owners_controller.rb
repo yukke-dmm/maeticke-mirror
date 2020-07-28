@@ -36,7 +36,7 @@ class Owner::OwnersController < ApplicationController
 
 	private
 	def owner_params
-		params.require(:owner).permit(:name, :image,:category_id, :average_price, :postcode, :address, :phone_number, :password, :encrypted_password)
+		params.require(:owner).permit(:name, :image,:introduce,:category_id, :average_price, :postcode, :address, :phone_number, :password, :encrypted_password)
 	end
 
 
