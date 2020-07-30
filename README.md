@@ -19,18 +19,17 @@
 <事業者、管理者、ユーザーの三方向からの制作になるが、naganocakeの応用で大きく難易度に差がないと思ったため。>
 
 ### ターゲットユーザ
-<行きつけのお店を持つ40代の会社員男性><br>
+<行きつけのお店を持つ30~40代の会社員男性><br>
 ・妻と子供二人の家庭を持つ。<br>
 ・企業の中間職として、挟まれて働いている中、自分だけの時間を作るために行きつけのお店がある。<br>
 ・失業の恐れが少ない正規雇用者である。<br>
 ・地域への関わりが多く、近所の人たちとのコミュニケーションをとることができている人である。<br>
-
+<br>
 <企業・個人事業主><br>
 ・地域に根付いたお店<br>
 ・安定したリピート率を抱えていて、その大半が周辺住民である。<br>
 ・利用者の多い大手企業<br>
-
-
+<br>
 ### 主な利用シーン
 ■　行きつけのお店を持つ30~40代の会社員男性<br>
 <休憩時間に仕事終わりにいくお店の商品を事前に購入しておく><br>
@@ -56,5 +55,10 @@
 [ER図]
 <https://drive.google.com/file/d/1K3CRqOL75FfuPk43KVeVbUbTC8EcMF7Q/view?usp=sharing>
 <br>
+[テーブル定義書]
+<https://docs.google.com/spreadsheets/d/1ghdCIgdtBSQt6uC4ZsNT151BncKMeVJtyW0Rx3ztTfk/edit?usp=sharing>
+<br>
+[アプリケーション詳細設計]
+<https://docs.google.com/spreadsheets/d/1_lWUV2e5ixXYp7fq5aeeBUJJ_VV-cOm-hsAHwk-NpJk/edit?usp=sharing>
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1W6RBANVhSHiE3OyVB-N1FCx4EwuV6MLon3ut-vau_vA/edit?usp=sharing>

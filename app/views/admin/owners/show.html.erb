@@ -1,0 +1,20 @@
+<h1>Admin::Owners#show</h1>
+<p>Find me in app/views/admin/owners/show.html.erb</p>
+	<p>店舗写真</p>
+		<%= attachment_image_tag @owner, :image ,:fill,100,70,fallback: "no_image.jpg", size: '100x70' %>
+	<p>カテゴリー</p>
+		<%= @owner.category.name %>
+	<p>店舗名</p>
+		<%= @owner.name %>
+	<p>平均利用額</p>
+		<%= @owner.average_price %>
+	<p>店舗紹介</p>
+		<%= @owner.introduce %>
+	<p>郵便番号</p>
+		<%= @owner.postcode %>
+	<p>所在地</p>
+		<%= @owner.address %>
+	<p>電話番号</p>
+		<%= @owner.phone_number %>
+
+	<%= link_to "編集する", edit_admin_owner_path %>

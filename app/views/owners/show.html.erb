@@ -1,0 +1,68 @@
+<h3>店舗詳細</h3>
+    <div class="row">
+    	<div class="col-md-9 col-sm-9 col-xs-9">
+			<div class="owner-card flex">
+					<div class="owner-image">
+		            	<%= attachment_image_tag @owner, :image , :fill, 300, 200, fallback: "no_image.jpg", size: '300x200' ,class:'card-img-top' %>
+		            </div>
+		            <div class="owner-text">
+			            <div>
+			            	【<%= @owner.category.name %>】
+								<%= @owner.name %>
+							TEL：<%= @owner.phone_number %>
+			            </div>
+			            <div class="owner-introduce">
+					    	<%= @owner.introduce %>
+				    	</div>
+				    	<div>
+				    		平均利用額：<%= @owner.average_price %>円
+				    	</div>
+				    	<div>
+				    		<%= @owner.postcode %>
+				    	</div>
+				    	<div>
+				    		<%= @owner.address %>
+				    	</div>
+				    </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-9 col-sm-9 col-xs-9">
+			<h3>商品一覧</h3>
+			    <div class="flex">
+					<% @products.each do |product| %>
+					<div class="card">
+			            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
+			            <div class="card-body">
+			                <span class="card-text">
+			                  <%= link_to product_path(product) do %>
+			                    <%= product.name %>(<%= product.genre.name %>)
+			                  <%end%>
+			                </span><br>
+			                <span class="card-text">
+			                  <%= link_to owner_path(product.owner.id) do %>
+			                    <%= product.owner.name %>
+			                  <% end %>
+			                </span>
+			                <span class="card-introduce">
+			                  <p>　<%= product.introduce %></p>
+			                </span>
+			                <div class="card-price">
+			                  <%= product.price %> 円　
+			                      <% if product.product_status == true %>
+			                            <span class="status2">販売停止</span>
+			                          <%else%>
+			                            <span class="status">販売中</span>
+			                      <% end %>
+			                </div>
+			            </div>
+			        </div>
+					<% end %>
+				</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-3">
+    		<h3>ソート</h3>
+  		</div>
+	</div>

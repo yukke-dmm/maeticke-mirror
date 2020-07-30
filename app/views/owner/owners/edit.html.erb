@@ -1,0 +1,27 @@
+<h1>Owners::Users#edit</h1>
+<h4>Find me in app/views/owners/users/edit.html.erb</h4>
+
+<%= form_for(@owner, url: owner_owner_path(@owner)) do |f|%>
+
+	<h4>店舗写真</h4>
+		<%= attachment_image_tag @owner, :image ,:fill,100,70,fallback: "no_image.jpg", size: '100x70' %>
+		<%= f.attachment_field :image, placeholder: "" %>
+	<h4>カテゴリー</h4>
+	    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
+
+	<h4>店舗名</h4>
+		<%= f.text_field :name %>
+	<h4>平均利用額</h4>
+		<%= f.text_field :average_price %>円
+	<h4>店舗紹介</h4>
+		<%= f.text_area :introduce %>
+	<h4>郵便番号</h4>
+		<%= f.text_field :postcode %>
+	<h4>所在地</h4>
+		<%= f.text_field :address %>
+	<h4>電話番号</h4>
+		<%= f.text_field :phone_number %>
+
+	<%= f.submit "変更を保存する" %>
+
+<% end %>
