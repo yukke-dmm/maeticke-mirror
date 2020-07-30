@@ -1,26 +1,49 @@
-<h1>OrderDetails#index</h1>
-<p>Find me in app/views/order_details/index.html.erb</p>
-  <h2>注文履歴一覧</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>注文商品</th>
-          </tr>
-        </thead>
-        <tbody>
+
+
+  <div class="row">
+      <h2>チケット一覧</h2>
+    <div class="col-md-9 col-sm-9 col-xs-9">
         	<!-- オーダーした日にちごとに並べていく -->
+
           <% @orders.each do |order| %>
+          <table class="table">
+            <thead>
             <tr>
-              <td>
-                <% order.order_details.each do |order_detail|%>
-                	<%= order_detail.product.name %>
-                	<%= order_detail.product.price %>
-                	<%= order_detail.ticket_count %>
-                <%= link_to '表示する', order_detail_path(order_detail.id) %><br>
-                <% end %>
-                </td>
+              <th><%= order.created_at.strftime('%Y/%m/%d/%H:%M') %></th>
             </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td>
+              <div class="flex">
+                  <% order.order_details.each do |order_detail|%>
+                    <div class="card">
+                      <%= attachment_image_tag order_detail.product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
+                      <div class="card-body">
+                        <span class="card-text">
+                          <%= order_detail.product.name %>
+                        </span>
+                        <span class="card-text">
+                          <%= order_detail.product.price %>
+                        </span>
+                        <span class="card-text">
+                          <%= order_detail.ticket_count %>
+                        </span>
+                        <div class="card-price">
+                          <%= link_to '表示する', order_detail_path(order_detail.id) %><br>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+              </div>
+              </td>
+              </tr>
+            </tbody>
+            </table>
           <% end %>
-        </tbody>
-      </table>
-      <%= paginate @orders %>      
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+        <h3>ソート</h3>
+    </div>
+  </div>
+      <%= paginate @orders %>
