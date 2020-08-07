@@ -6,7 +6,15 @@ class Owner::ProductsController < ApplicationController
   def index
     # # @products = @owner.products
     # @owner = Owner.find(current_owner.id)
-     @products = Product.where(owner_id: current_owner.id).page(params[:page])
+    @products = Product.where(owner_id: current_owner.id).page(params[:page])
+    time = Time.now
+    # もし期限を過ぎたら表示は販売停止になるよ
+    @products.each do |product|
+      if (product.updated_at+product.limit.days) < time && product.product_status == false
+        product.product_status = true
+        product.save
+      end
+    end
   end
 
   # GET /products/1
@@ -72,7 +80,7 @@ class Owner::ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :introduce, :image, :price, :genre_id, :product_status, :delete_flag)
+      params.require(:product).permit(:name, :introduce, :image, :price, :genre_id, :product_status, :delete_flag,:limit)
     end
 
 end

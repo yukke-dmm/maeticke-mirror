@@ -1,6 +1,5 @@
 
 
-
 // $(function(){
 // $("document").ready(function(){
 $("document").ready(function() {
@@ -18,7 +17,7 @@ $("document").ready(function() {
   // ナビゲーション矢印の表示（trueで表示）
   arrows : true,
   // スライドショーの自動再生（falseで自動再生なし）
-  autoPlay : true,
+  autoPlay :true,
   // 自動再生時のスライド切替間隔（ミリ秒）
   autoPlayDuration : 2000,
   // キーボードの矢印キーによるスライド送りの設定（trueで有効）
@@ -27,6 +26,29 @@ $("document").ready(function() {
   hidePrevious : false});
 });
 // オプションを指定してSkipprの実行
+
+
+// $(function() {
+//   $('.menu-trigger').on('click', function(event) {
+//     $(this).toggleClass('active');
+//     $('#sp-menu').fadeToggle();
+//     event.preventDefault();
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ここから下を動かすと、退会時にもスライドを入れようとするが故にログアウトできなくなる。

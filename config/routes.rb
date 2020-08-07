@@ -32,8 +32,13 @@ Rails.application.routes.draw do
 
 
 # ここからユーザー関連
-  resources :products, only:[:index,:show]
-  resources :owners, only:[:index,:show]
+  resources :products, only:[:index,:show] do
+    # 商品にいいね機能を追加する。
+    resource :favorites, only: [:create, :destroy]
+  end
+  resources :owners, only:[:index,:show] do
+    resource :post_comments, only: [:create, :destroy]
+  end
   resources :cart_items,only:[:index,:create,:update,:destroy]
   resources :orders, only:[:new,:index,:create]
   get 'orders/fin'

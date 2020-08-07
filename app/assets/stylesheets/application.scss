@@ -18,12 +18,33 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-a{
+
+/****************************************************************/
+/*全体に関わるもの*/
+
+
+body{
+	background-color:#ECEff1;
+}
+
+#map{
+	height:200px;
+	width:220px;
+	background-color:yellow;
+}
+a:link, a:visited, a:hover, a:active{
 	color:none;
 }
 .row{
 	background-color:skyblue;
 }
+
+
+
+
+
+/****************************************************************/
+
 
 /*スライドショー*/
 #container{
@@ -32,8 +53,14 @@ a{
     background-position: center;
 }
 
-/*ヘッダー関連*/
 
+/****************************************************************/
+
+
+
+
+
+/*ヘッダー関連*/
 nav{
 	background-color: rgba( 233, 163, 38, 0.5);
 /* 背景色を半透明*/
@@ -43,6 +70,80 @@ nav.nav-bar{
 }
 
 
+
+/****************************************************************/
+
+
+/*トップページ関連*/
+.back{
+	background-color:white;
+}
+
+.portfolio{
+  	width: 800px;
+	margin: 0 auto;
+	padding:30px;
+}
+
+.row1{
+	padding: 20px;
+}
+
+.portfolio-title{
+	text-align: center;
+	font-size: 32px;
+	padding-bottom: 8px;
+}
+
+.portfolio-text{
+	height:400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.portfolio-border{
+    margin: 0 auto;
+    width: 200px;
+	border-bottom:  3px solid  #EC715F;
+}
+
+.portfolio-box{
+	margin: 30px auto;
+}
+
+.leftbar, .rightbar{
+    height:360px;
+	width:360px;
+    padding: 20px 20px;
+}
+
+.image-box{
+  width: 300px;
+  height: 300px;
+  	background-image: url(ticket.jpg);
+	background-size: cover;
+    background-position: center;
+   	border-radius: 50%;
+}
+
+.howto{
+	width:900px;
+	margin: 0 auto;
+	padding:30px;
+}
+
+.step{
+	height:300px;
+	width:270px;
+    margin: 20px 5px;
+    padding: 5px;
+    background-color:yellowgreen;
+    border: solid 1px gray;
+}
+
+/****************************************************************/
 /*フッター関連*/
 footer{
 	background-color: gray;
@@ -56,6 +157,14 @@ footer.a{
 	font-color:white;
 }
 
+
+
+
+
+/******************************************************************/
+
+
+
 /*ここからチケットのデザイン*/
 .flex{
 	display: flex;
@@ -66,27 +175,35 @@ footer.a{
 .card{
     margin:5px;
 	padding:10px;
-	border: solid 1px gray;
+	border-radius: 3px;
 	width:180px;
 	height:270px;
+	background-image: url(ticket.png);
+	background-size: cover;
+    background-position: center;
 }
 .card-img-top{
-	border: solid 1px gray;
+    margin-top:8px;
+	border-radius: 3px;
 }
 .card-body{
 	padding:5px 0;
 	height:130px;
-	background-color:pink;
 	position:relative;
+}
+
+.card-text{
+	border-bottom: solid 3px #ECEff1;
 }
 .card-introduce > p{
 	font-size:5px;
 	line-height:10px;
+	color: green;
 }
-.card-price{
+.card-status{
 	position:absolute;
 	right:0px;
-    bottom:0px;
+    bottom:20px;
 }
 .status{
 	background-color:blue;
@@ -102,22 +219,37 @@ footer.a{
 }
 
 
+/****************************************************************/
+
+
 /*ここから商品詳細画面*/
 .product-show{
 	height:400px;
 	background-color:pink;
 }
 
+
+
+
+/****************************************************************/
+
+
+
 /*ここからオーナー一覧*/
 .owner-card{
 	padding: 20px;
+	width:100%;
 	border-bottom:solid 1px gray ;
-	background-color:pink;
+	background-color:white;
 }
 .owner-image{
 	margin-right: 20px;
 }
 
+.owner-map{
+	padding: 25px 0 ;
+	width:100%;
+}
 .owner-introduce{
 	height:140px;
 	width:100%;
@@ -125,3 +257,6 @@ footer.a{
 	border-bottom: solid 1px gray;
 	border-top: solid 1px gray;
 }
+
+
+

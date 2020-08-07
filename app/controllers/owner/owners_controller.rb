@@ -5,6 +5,8 @@ class Owner::OwnersController < ApplicationController
 
   def show
     @owner = Owner.find(params[:id])
+    @products = Product.where(owner_id: @owner.id)
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -36,7 +38,7 @@ class Owner::OwnersController < ApplicationController
 
 	private
 	def owner_params
-		params.require(:owner).permit(:name, :image,:introduce,:category_id, :average_price, :postcode, :address, :phone_number, :password, :encrypted_password)
+		params.require(:owner).permit(:name, :image,:introduce,:category_id, :average_price, :postcode, :address, :phone_number, :longitude,:latitude,:password, :encrypted_password)
 	end
 
 
