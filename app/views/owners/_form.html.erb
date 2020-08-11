@@ -1,0 +1,8 @@
+<div class='navbar-form navbar-right'>
+<%= search_form_for @q do |f|%>
+  <div class="form-group">
+  <%= f.search_field :name_cont, class: 'form-control'%>
+  <%= f.submit "検索", class: 'btn btn-default' %>
+  </div>
+<% end %>
+</div>

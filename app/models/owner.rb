@@ -22,4 +22,5 @@ class Owner < ApplicationRecord
   acts_as_paranoid
 
 
+
 end

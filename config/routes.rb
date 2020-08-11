@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
+
   # これが論理削除の下にあるとログアウトで論理削除されてしまう。
   devise_for :users
 
@@ -27,7 +29,9 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :categories, only:[:index,:edit,:create,:update,:destroy]
     resources :users,only:[:index,:edit,:show,:update,:destroy]
-    resources :owners, only:[:index,:edit,:show,:update,:destroy]
+    resources :owners, only:[:index,:edit,:show,:update,:destroy] do
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
 
 
@@ -35,9 +39,13 @@ Rails.application.routes.draw do
   resources :products, only:[:index,:show] do
     # 商品にいいね機能を追加する。
     resource :favorites, only: [:create, :destroy]
+    # # serchアクションを使う時ゲットでもポストでも動くよ
+    # collection do
+    #   match 'search' => 'items#search', via: [:get, :post]
+    # end
   end
   resources :owners, only:[:index,:show] do
-    resource :post_comments, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
   end
   resources :cart_items,only:[:index,:create,:update,:destroy]
   resources :orders, only:[:new,:index,:create]

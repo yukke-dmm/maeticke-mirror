@@ -1,5 +1,5 @@
 class Owner::OwnersController < ApplicationController
-
+  before_action :authenticate_owner!
   def index
   end
 
@@ -10,7 +10,7 @@ class Owner::OwnersController < ApplicationController
   end
 
   def edit
-  	@owner = current_owner
+  	@owner = current_owner　
   end
 
   def update

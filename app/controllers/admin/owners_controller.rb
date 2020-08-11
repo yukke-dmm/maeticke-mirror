@@ -1,10 +1,13 @@
 class Admin::OwnersController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @owners = Owner.all
   end
 
   def show
     @owner = Owner.find(params[:id])
+    @products = Product.where(owner_id: @owner.id)
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -23,11 +26,15 @@ class Admin::OwnersController < ApplicationController
   end
 
   def destroy
+    @owner = Owner.find(params[:id])
+    @owner.destroy
+    flash[:notice] = "退会しました"
+    redirect_to admin_owmers_path
   end
 
   private
   def owner_params
-    params.require(:owner).permit(:name, :image,:category_id, :average_price, :postcode, :address, :phone_number, :password, :encrypted_password)
+    params.require(:owner).permit(:name, :image,:introduce,:category_id, :average_price, :postcode, :address, :phone_number, :longitude,:latitude,:password, :encrypted_password)
   end
 
 end

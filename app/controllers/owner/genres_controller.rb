@@ -1,4 +1,5 @@
 class Owner::GenresController < ApplicationController
+  before_action :authenticate_owner!
   def index
   	@genres = Genre.where(owner_id: current_owner.id).page(params[:page])
     @genre = Genre.new

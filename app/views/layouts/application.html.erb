@@ -9,15 +9,41 @@
     <script src="https://kit.fontawesome.com/5ac4675677.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
   </head>
 
   <body>
+    
+<!-- loadingお試し -->
+<!-- <div class="loader-wrap">
+  <div class="loader">Loading...</div>
+</div> -->
+
       <header>
         <nav class="site-header">
           <div class="collapse navbar-collapse" id="navbarEexample1">
-            <%= link_to root_path do %>
+          <span class="homeicon">
+            <% if user_signed_in? %>
+                <%= link_to root_path do %>
                   <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
+            <% elsif owner_signed_in? %>
+                <%= link_to owner_homes_top_path do %>
+                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
+            <% elsif admin_signed_in? %>
+                <%= link_to admin_homes_top_path do %>
+                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
+            <% else %>
+                <%= link_to root_path do %>
+                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
             <% end %>
+          </span>
+
+
+
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                 <p class="navbar-text"><%= current_user.name %>さん</p>
@@ -34,7 +60,7 @@
                 <li><%= link_to destroy_owner_session_path, method: :delete do%><i class="fas fa-sign-out-alt"> ログアウト</i><%end%></li>
                 <li><%= link_to owner_owners_quit_path(current_owner) do %><i class="fas fa-user-slash"> 退会処理</i><%end%></li>
               <% elsif admin_signed_in? %>
-                <li>管理者</li>
+                <p class="navbar-text">管理者</p>
                 <li><%= link_to admin_owners_path do%><i class="fas fa-store"> オーナー</i><%end%></li>
                 <li><%= link_to admin_users_path do%><i class="fas fa-users"> ユーザー</i><%end%></li>
                 <li><%= link_to admin_categories_path do%><i class="fas fa-sitemap"> カテゴリー</i><%end%></li>
@@ -62,6 +88,9 @@
                 <%#= render 'products/form', product: @products %>
           </div>
         </nav>
+
+
+
      <%= yield %>
   </body>
   <footer>

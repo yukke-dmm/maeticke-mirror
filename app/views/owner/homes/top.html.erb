@@ -1,2 +1,44 @@
-<h1>Owners::Homes#top</h1>
-<p>Find me in app/views/owners/homes/top.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h3>売り上げ</h3>
+
+		<table class="table table-borderless">
+			<thead class="thead-dark">
+				<tr>
+					<th>販売日</th>
+					<th>商品名</th>
+					<th>価格</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @order_detail.each do |order_detail| %>
+				<tr>
+				    <td><%= order_detail.created_at.strftime('%Y/%m/%d/%H:%M')%></td>
+					<td><%= order_detail.product.name %></td>
+					<td><%= order_detail.product.price %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="page">
+		<%= paginate @products %>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="row">
+				<% i = 0 %>
+				<% @order_detail.each do |order_detail| %>
+					<% i = i + order_detail.product.price %>
+				<% end %>
+		<div class="col-md-8 col-sm-8 col-xs-8"></div>
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<div class="">
+			<h1><%= i %>　円</h1>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>

@@ -1,27 +1,57 @@
-<h1>Admin::Owners#edit</h1>
-<p>Find me in app/views/admin/owners/edit.html.erb</p>
+<div class="container">
+	<h3>店舗情報編集</h3>
+	  	<div class="row">
+	  		<div class="col-md-9 col-sm-9 col-xs-9">
+				<%= form_for(@owner, url: admin_owner_path(@owner)) do |f|%>
+					<div class="owner-card flex">
+						<div class="owner-image">
+						店舗写真：<br>
+							<%= attachment_image_tag @owner, :image ,:fill,300,200,fallback: "no_image.jpg", size: '300x200' %>
+							<%= f.attachment_field :image, placeholder: "" %>
+						</div>
+						<div class="owner-text">
+							<table>
+								<thead>
+								</thead>
 
-<%= form_for(@owner, url: admin_owner_path(@owner)) do |f|%>
+								<tbody>
+								<tr>
+									<td>カテゴリー：</td>
+								    <td><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %></td>
 
-	<h4>店舗写真</h4>
-		<%= attachment_image_tag @owner, :image ,:fill,100,70,fallback: "no_image.jpg", size: '100x70' %>
-		<%= f.attachment_field :image, placeholder: "" %>
-	<h4>カテゴリー</h4>
-	    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
+								</tr>
+								<tr>
+									<td>店舗名：</td>
+									<td><%= f.text_field :name %></td>
+								</tr>
+								<tr>
+									<td>電話番号：</td>
+									<td><%= f.text_field :phone_number %><br>
+								</tr>
+								<tr>
+									<td>店舗紹介：</td>
+									<td><%= f.text_area :introduce %></td>
+								</tr>
+								<tr>
+									<td>平均利用額：</td>
+									<td><%= f.text_field :average_price %>円</td>
+								</tr>
+								<tr>
+									<td>郵便番号：</td>
+									<td><%= f.text_field :postcode %></td>
+								</tr>
+								<tr>
+									<td>所在地：</td>
+									<td><%= f.text_field :address %></td>
+								</tr>
+								<tr>
 
-	<h4>店舗名</h4>
-		<%= f.text_field :name %>
-	<h4>平均利用額</h4>
-		<%= f.text_field :average_price %>円
-	<h4>店舗紹介</h4>
-		<%= f.text_area :introduce %>
-	<h4>郵便番号</h4>
-		<%= f.text_field :postcode %>
-	<h4>所在地</h4>
-		<%= f.text_field :address %>
-	<h4>電話番号</h4>
-		<%= f.text_field :phone_number %>
+							</table>
+							<%= f.submit "変更を保存する" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+</div>
 
-	<%= f.submit "変更を保存する" %>
-
-<% end %>

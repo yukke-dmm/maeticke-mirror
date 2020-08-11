@@ -1,30 +1,35 @@
-<h1>Admin::Owners#index</h1>
-<p>Find me in app/views/admin/owners/index.html.erb</p>
+<div class="container">
+	<div class="row">
+	<h3>オーナー一覧</h3>
+		<table class="table table-borderless">
+			<thead class="thead-dark">
+				<tr>
+					<th>オーナーID</th>
+					<th>カテゴリー</th>
+					<th>店舗名</th>
+					<th>電話番号</th>
+					<th></th>
+				</tr>
+			</thead>
 
-<table class="table table-borderless">
-	<thead class="thead-dark">
-		<tr>
-			<th>オーナーID</th>
-			<th>カテゴリー</th>
-			<th>店舗名</th>
-			<th>電話番号</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @owners.each do |owner| %>
-			<tr>
-				<td><%= owner.id %></td>
-				<td><%= owner.category.name %></td>
-				<td>
-                	<%= link_to admin_owner_path(owner.id) do %>
-					<%= owner.name %>
-					<% end %>
-		    	</td>
-		    	<td><%= owner.phone_number %></td>
-            	</td>
-			</tr>
-		<% end %>
-	</tbody>
-
-</table>
+			<tbody>
+				<% @owners.each do |owner| %>
+					<tr>
+						<td><%= owner.id %></td>
+						<td><%= owner.category.name %></td>
+						<td>
+		                	<%= link_to admin_owner_path(owner.id) do %>
+							<%= owner.name %>
+							<% end %>
+				    	</td>
+				    	<td><%= owner.phone_number %></td>
+		            	</td>
+		            	<td><%= link_to "退会させる",admin_owner_path(owner.id), method: :delete, data: { confirm: '本当に退会させますか？' }, class: "label label-danger" %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+<br>
+<br>

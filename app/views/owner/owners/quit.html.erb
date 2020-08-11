@@ -1,5 +1,6 @@
-<h1>Owner#quit</h1>
-<p>Find me in app/views/users/quit.html.erb</p>
+<div class="container">
+  <div class="row">
+<h3>退会処理</h3>
 
 	<h3>本当に退会しますか？</h3>
 	<p>
@@ -12,3 +13,5 @@
 	  <h3><%= link_to "退会しない",owner_homes_top_path(@owner),class: "label label-info" %>
 
   <%= link_to "退会する",owner_owner_path(@owner), method: :delete, data: { confirm: '本当に退会しますか？' }, class: "label label-danger" %><h3>
+</div>
+</div>

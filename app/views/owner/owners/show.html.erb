@@ -25,6 +25,11 @@
 					    		<%= @owner.address %>
 					    	</div>
 					    </div>
+					    <div class="status">
+					    <%= link_to edit_owner_owner_path(@owner.id) do %>
+					            編集する
+					    <% end %>
+					    </div>
 
 				</div>
 			</div>
@@ -39,7 +44,7 @@
 			<div class="col-md-9 col-sm-9 col-xs-9">
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#sampleContentA" data-toggle="tab">商品一覧</a></li>
-					<li><a href="#sampleContentB" data-toggle="tab">コメント</a></li>
+					<li><a href="#sampleContentB" data-toggle="tab">コメント(<%= @owner.post_comments.count %>件)</a></li>
 				</ul>
 				<br>
 				<div class="tab-content">
@@ -47,7 +52,7 @@
 					    <div class="flex">
 							<% @products.each do |product| %>
 							<div class="card">
-					            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
+					            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '180x130' ,class:'card-img-top' %>
 					            <div class="card-body">
 					                <span class="card-text">
 					                  <%= link_to product_path(product) do %>
@@ -78,9 +83,6 @@
 						    <li class="comment">
 						      <div class="comment-body bb">
 						        <div class="comment-avatar">
-						          <div class="avatar">
-						            <%= image_tag('no_image.jpg', style: "width: 60px; height: 60px;") %>
-						          </div>
 						        </div>
 						        <div class="comment-text">
 						          <div class="comment-author clearfix">
@@ -88,6 +90,23 @@
 						            <span class="comment-meta">
 						              <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
 						            </span>
+						           <script type="text/javascript">
+//ページが読み込まれた時にjqueryの処理を実行します。
+$("document").ready(function() {
+  $('#star-assess<%= post_comment.id %>').raty({
+    size: 36,
+   starOff: '<%= asset_path("star-off.png") %>',
+   starOn: '<%= asset_path("star-on.png") %>',
+   starHalf: '<%= asset_path("star-half.png") %>',
+    half: true,
+    readOnly: true,
+    score: '<%= post_comment.assess %>',
+    //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+  });
+  });
+</script>
+
+<div id="star-assess<%= post_comment.id %>"></div>
 						          </div>
 						          <div class="comment-entry"><%= post_comment.comment %></div>
 						        </div>

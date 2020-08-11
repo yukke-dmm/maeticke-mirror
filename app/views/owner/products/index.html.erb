@@ -1,9 +1,6 @@
 <div class="container">
-
-	<h1>商品一覧</h1>
-
-
-	<%= flash[:notice] %>
+  <div class="row">
+	<h3>商品一覧</h3>
 	<%= link_to "商品追加", new_owner_product_path, class:"btn btn-default btn-circle marubtn" %>
 
 	<%#= render 'products/form', product: @products %>
@@ -50,7 +47,5 @@
 	<div class="page">
 	<%= paginate @products %>
 	</div>
-	</div>
-	</div>
-	</div>
+</div>
 </div>

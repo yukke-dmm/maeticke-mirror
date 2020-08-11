@@ -1,6 +1,6 @@
 
 <script type="text/javascript">
-  function initMap() {
+function initMap() {
 
     var test = {lat: <%= @owner.latitude %>, lng: <%= @owner.longitude %>};
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -24,8 +24,9 @@
     marker.addListener('click', function() {
       infowindow.open(map, marker);
     });
-  }
+  };
 </script>
+
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=
   AIzaSyAL1ZKvPdAk2BGiDZw_L06KhzgllYNcHXo&callback=initMap">

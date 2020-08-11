@@ -1,16 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 col-sm-9 col-xs-9">
-      <h1>商品一覧</h1>
+    <div class="col-md-10 col-sm-10 col-xs-10">
+      <h3>商品一覧</h3>
+      <div class="divline"></div>
 
         <div class="flex">
           <% @products.reverse_each do |product| %>
             <div class="card">
-              <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
+              <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '180x130' ,class:'card-img-top' %>
                 <div class="card-body">
                   <span class="card-text">
                     <%= link_to product_path(product) do %>
-                      <%= product.name %>
+                    <%= product.name %>
                     <%end%>
                   </span><br>
                   <span class="card-text">
@@ -20,8 +21,7 @@
                   </span>
                   <br>
                   <span class="card-introduce">
-                    
-                    <p>利用期限<br><%= (product.updated_at+product.limit.days).strftime("%Y/%m/%d %H:%M:%S" ) %></p>
+                    <p>購入可能期限<br><%= (product.updated_at+product.limit.days).strftime("%Y/%m/%d") %>まで</p>
                   </span>
                   <strong class="card-text"><%= product.price %> 円　</strong>
                   <div class="card-status">
@@ -47,10 +47,14 @@
               </div>
             </div>
           <% end %>
+
         </div>
+          <div class="page">
+          <%= paginate @products %>
+          </div>
     </div>
-    <div class="col-md-3 col-sm-3 col-xs-3">
-      <h1>商品検索</h1>
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <h3>商品検索</h3>
                   <%= render 'products/form', product: @products %>
     </div>
   </div>

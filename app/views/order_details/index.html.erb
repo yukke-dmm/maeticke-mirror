@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container">　
 
   <div class="row">
-    <div class="col-md-9 col-sm-9 col-xs-9">
+    <div class="col-md-10 col-sm-10 col-xs-10">
         	<!-- オーダーした日にちごとに並べていく -->
        <h3>チケット一覧</h3>
-          <% @orders.each do |order| %>
+       <div class="divline"></div>
+          <% @orders.reverse_each do |order| %>
           <table class="table">
             <thead>
             <tr>
@@ -17,20 +18,31 @@
               <div class="flex">
                   <% order.order_details.each do |order_detail|%>
                     <div class="card">
-                      <%= attachment_image_tag order_detail.product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
+                      <%= attachment_image_tag order_detail.product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '180x130' ,class:'card-img-top' %>
                       <div class="card-body">
                         <span class="card-text">
                           <%= order_detail.product.name %>
                         </span>
                         <span class="card-text">
-                          <%= order_detail.product.price %>
+                          <%= order_detail.product.price %>　円
                         </span>
-                        <span class="card-text">
-                          <%= order_detail.ticket_count %>
-                        </span>
-                        <div class="card-price">
-                          <%= link_to '表示する', order_detail_path(order_detail.id) %><br>
+                        <span class="card-introduce">
+                    
+                    <p>利用可能期限<br><%= (order_detail.created_at+order_detail.product.limit.days).strftime("%Y/%m/%d") %>まで</p>
+                  </span>
+                        <div class="card-p"><br>
                         </div>
+                        <div class="card-status">
+                          <%= order_detail.ticket_count %>　枚
+<!-- 枚数が０、もしくはstatusがtrueになったら使用不可になるよ -->
+                            <% if order_detail.ticket_count == 0 || order_detail.status == true %>
+                              <span class="status2">使用不可</span>
+                            <% else %>
+                              <span class="status">
+                                <%= link_to '使用画面へ', order_detail_path(order_detail.id) %>
+                              </span>
+                          　<% end %>
+                          </div>
                       </div>
                     </div>
                   <% end %>
@@ -42,7 +54,7 @@
           <% end %>
     </div>
 
-    <div class="col-md-3 col-sm-3 col-xs-3">
+    <div class="col-md-2 col-sm-2 col-xs-2">
     <h3>ソート</h3>
     </div>
   </div>

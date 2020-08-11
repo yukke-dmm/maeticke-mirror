@@ -17,14 +17,20 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
+@import "loading";
 
 /****************************************************************/
 /*全体に関わるもの*/
+h3, a{
+ font-family: "M PLUS Rounded 1c";
+}
 
+.divline{
+	border-bottom: solid 1px gray;
+}
 
 body{
-	background-color:#ECEff1;
+	background-color:white;
 }
 
 #map{
@@ -32,15 +38,14 @@ body{
 	width:220px;
 	background-color:yellow;
 }
-a:link, a:visited, a:hover, a:active{
-	color:none;
-}
-.row{
-	background-color:skyblue;
+
+.homeicon > a:link, a:visited, a:hover, a:active{
+	background-color:rgba(0, 0, 0, 0);
 }
 
-
-
+ol{
+	list-style:none;
+}
 
 
 /****************************************************************/
@@ -75,8 +80,30 @@ nav.nav-bar{
 
 
 /*トップページ関連*/
+.fadeInDown {
+ -webkit-animation-fill-mode:both;
+ -ms-animation-fill-mode:both;
+ animation-fill-mode:both;
+ -webkit-animation-duration:1s;
+ -ms-animation-duration:1s;
+ animation-duration:1s;
+ -webkit-animation-name: fadeInDown;
+ animation-name: fadeInDown;
+ visibility: visible !important;
+}
+@-webkit-keyframes fadeInDown {
+ 0% { opacity: 0; -webkit-transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0); }
+}
+@keyframes fadeInDown {
+ 0% { opacity: 0; -webkit-transform: translateY(-20px); -ms-transform: translateY(-20px); transform: translateY(-20px); }
+ 100% { opacity: 1; -webkit-transform: translateY(0); -ms-transform: translateY(0); transform: translateY(0); }
+}
+
+
+
 .back{
-	background-color:white;
+	background-color:#ECEff1;
 }
 
 .portfolio{
@@ -128,6 +155,26 @@ nav.nav-bar{
    	border-radius: 50%;
 }
 
+.vision-title{
+	text-aline:center;
+	border-bottom:solid 1px gray;
+}
+
+.vision-text{
+	font-family: "M PLUS Rounded 1c";
+}
+
+.icon{
+    text-align: center;
+	margin: 0 auto;
+	padding-bottom:20px;
+}
+
+.icon > i{
+	font-size:60px;
+}
+
+
 .howto{
 	width:900px;
 	margin: 0 auto;
@@ -138,10 +185,46 @@ nav.nav-bar{
 	height:300px;
 	width:270px;
     margin: 20px 5px;
-    padding: 5px;
-    background-color:yellowgreen;
+    padding: 10px;
+    background-color:#ECEff1;
     border: solid 1px gray;
+    border-radius:10px;
 }
+.step-logo{
+	color:white;
+	background-color:orange;
+	text-align:center;
+	width:50px;
+	line-height:20px;
+	border-radius:3px;
+}
+
+
+.image-box2{
+  margin:0 auto;
+  width: 240px;
+  height: 150px;
+  	background-image: url(phone.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.image-box3{
+  margin:0 auto;
+  width: 240px;
+  height: 150px;
+  	background-image: url(pay.jpg);
+	background-size: cover;
+    background-position: center;
+}
+.image-box4{
+  margin:0 auto;
+  width: 240px;
+  height: 150px;
+  	background-image: url(look.jpg);
+	background-size: cover;
+    background-position: center;
+}
+
 
 /****************************************************************/
 /*フッター関連*/
@@ -174,7 +257,7 @@ footer.a{
 }
 .card{
     margin:5px;
-	padding:10px;
+
 	border-radius: 3px;
 	width:180px;
 	height:270px;
@@ -183,12 +266,10 @@ footer.a{
     background-position: center;
 }
 .card-img-top{
-    margin-top:8px;
-	border-radius: 3px;
 }
 .card-body{
-	padding:5px 0;
-	height:130px;
+	padding:10px ;
+	height:150px;
 	position:relative;
 }
 
@@ -202,20 +283,22 @@ footer.a{
 }
 .card-status{
 	position:absolute;
-	right:0px;
-    bottom:20px;
+	right:10px;
+    bottom:30px;
 }
 .status{
-	background-color:blue;
+	background-color:#CC9900;
 	color:white;
 	padding:3px;
 	border-radius:3px;
+	font-family: "M PLUS Rounded 1c"
 }
 .status2{
-	background-color:red;
+	background-color:#990000;
 	color:white;
 	padding:3px;
 	border-radius:3px;
+	font-family: "M PLUS Rounded 1c"
 }
 
 
@@ -225,7 +308,6 @@ footer.a{
 /*ここから商品詳細画面*/
 .product-show{
 	height:400px;
-	background-color:pink;
 }
 
 
@@ -258,5 +340,16 @@ footer.a{
 	border-top: solid 1px gray;
 }
 
+/****************************************************************/
+/*コメント欄*/
 
-
+.comment{
+	padding:0px 20px 20px;
+	border-bottom:solid 1px gray;
+}
+.comment-form{
+	margin:20px;
+}
+.comment-btn{
+	margin:20px;
+}
