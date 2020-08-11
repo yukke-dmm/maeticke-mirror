@@ -27,9 +27,9 @@ function initMap() {
   };
 </script>
 
+
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=
-  AIzaSyAL1ZKvPdAk2BGiDZw_L06KhzgllYNcHXo&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap">
 </script>
 
 <div id="map"></div>

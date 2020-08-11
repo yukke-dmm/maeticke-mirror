@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
+
+
 
   # これが論理削除の下にあるとログアウトで論理削除されてしまう。
   devise_for :users
@@ -53,6 +54,11 @@ Rails.application.routes.draw do
   resources :order_details, only:[:index,:show,:update]
   get 'users/quit'
   resources :users, only:[:destroy]
+
+# 問い合わせ
+  get 'inquiry/index'
+  get 'inquiry/confirm'
+  get 'inquiry/thanks'
 
   delete 'cart_items_destroy_all' => 'cart_items#destroy_all'
 
