@@ -149,7 +149,7 @@ nav.nav-bar{
 .image-box{
   width: 300px;
   height: 300px;
-  	background-image: image-url(ticket.jpg);
+  	background-image: image-url("ticket.jpg");
 	background-size: cover;
     background-position: center;
    	border-radius: 50%;
@@ -204,7 +204,7 @@ nav.nav-bar{
   margin:0 auto;
   width: 240px;
   height: 150px;
-  	background-image: image-url(phone.jpg);
+  	background-image: image-url("phone.jpg");
 	background-size: cover;
     background-position: center;
 }
@@ -212,7 +212,7 @@ nav.nav-bar{
   margin:0 auto;
   width: 240px;
   height: 150px;
-  	background-image: image-url(pay.jpg);
+  	background-image: image-url("pay.jpg");
 	background-size: cover;
     background-position: center;
 }
@@ -220,7 +220,7 @@ nav.nav-bar{
   margin:0 auto;
   width: 240px;
   height: 150px;
-  	background-image: image-url(look.jpg);
+  	background-image: image-url("look.jpg");
 	background-size: cover;
     background-position: center;
 }
@@ -261,7 +261,7 @@ footer.a{
 	border-radius: 3px;
 	width:180px;
 	height:270px;
-	background-image: image-url(ticket.png);
+	background-image: image-url("ticket.png");
 	background-size: cover;
     background-position: center;
 }
