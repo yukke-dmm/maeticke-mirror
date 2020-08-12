@@ -1,14 +1,16 @@
 class Owner::OwnersController < ApplicationController
-
+  before_action :authenticate_owner!
   def index
   end
 
   def show
     @owner = Owner.find(params[:id])
+    @products = Product.where(owner_id: @owner.id)
+    @post_comment = PostComment.new
   end
 
   def edit
-  	@owner = current_owner
+  	@owner = current_owner　
   end
 
   def update
@@ -36,7 +38,7 @@ class Owner::OwnersController < ApplicationController
 
 	private
 	def owner_params
-		params.require(:owner).permit(:name, :image,:introduce,:category_id, :average_price, :postcode, :address, :phone_number, :password, :encrypted_password)
+		params.require(:owner).permit(:name, :image,:introduce,:category_id, :average_price, :postcode, :address, :phone_number, :longitude,:latitude,:password, :encrypted_password)
 	end
 
 

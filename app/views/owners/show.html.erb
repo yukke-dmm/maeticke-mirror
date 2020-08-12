@@ -1,68 +1,170 @@
-<h3>店舗詳細</h3>
-    <div class="row">
-    	<div class="col-md-9 col-sm-9 col-xs-9">
-			<div class="owner-card flex">
-					<div class="owner-image">
-		            	<%= attachment_image_tag @owner, :image , :fill, 300, 200, fallback: "no_image.jpg", size: '300x200' ,class:'card-img-top' %>
-		            </div>
-		            <div class="owner-text">
-			            <div>
-			            	【<%= @owner.category.name %>】
-								<%= @owner.name %>
-							TEL：<%= @owner.phone_number %>
+<div class="container">
+	<h3>店舗詳細</h3>
+	<div class="divline"></div>
+	    <div class="row">
+	    	<div class="col-md-8 col-sm-8 col-xs-8">
+				<div class="owner-card flex">
+						<div class="owner-image">
+			            	<%= attachment_image_tag @owner, :image , :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' ,class:'card-img-top' %>
 			            </div>
-			            <div class="owner-introduce">
-					    	<%= @owner.introduce %>
-				    	</div>
-				    	<div>
-				    		平均利用額：<%= @owner.average_price %>円
-				    	</div>
-				    	<div>
-				    		<%= @owner.postcode %>
-				    	</div>
-				    	<div>
-				    		<%= @owner.address %>
-				    	</div>
-				    </div>
+			            <div class="owner-text">
+				            <div>
+				            	【<%= @owner.category.name %>】
+									<%= @owner.name %>
+								TEL：<%= @owner.phone_number %>
+				            </div>
+				            <div class="owner-introduce">
+						    	<%= @owner.introduce %>
+					    	</div>
+					    	<div>
+					    		平均利用額：<%= @owner.average_price %>円
+					    	</div>
+					    	<div>
+					    		<%= @owner.postcode %>
+					    	</div>
+					    	<div>
+					    		<%= @owner.address %>
+					    	</div>
+					    </div>
+
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<div class="owner-map">
+					<%= render 'owners/map', owner: @owner %>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="col-md-9 col-sm-9 col-xs-9">
-			<h3>商品一覧</h3>
-			    <div class="flex">
-					<% @products.each do |product| %>
-					<div class="card">
-			            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
-			            <div class="card-body">
-			                <span class="card-text">
-			                  <%= link_to product_path(product) do %>
-			                    <%= product.name %>(<%= product.genre.name %>)
-			                  <%end%>
-			                </span><br>
-			                <span class="card-text">
-			                  <%= link_to owner_path(product.owner.id) do %>
-			                    <%= product.owner.name %>
-			                  <% end %>
-			                </span>
-			                <span class="card-introduce">
-			                  <p>　<%= product.introduce %></p>
-			                </span>
-			                <div class="card-price">
-			                  <%= product.price %> 円　
-			                      <% if product.product_status == true %>
-			                            <span class="status2">販売停止</span>
-			                          <%else%>
-			                            <span class="status">販売中</span>
-			                      <% end %>
-			                </div>
-			            </div>
-			        </div>
-					<% end %>
+	<br>
+		<div class="row">
+			<div class="col-md-10 col-sm-10 col-xs-10">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#sampleContentA" data-toggle="tab">商品一覧</a></li>
+					<li><a href="#sampleContentB" data-toggle="tab">コメント(<%= @owner.post_comments.count %>件)</a></li>
+				</ul>
+				<br>
+				<div class="tab-content">
+					<div class="tab-pane active" id="sampleContentA">
+					    <div class="flex">
+							<% @products.each do |product| %>
+							<div class="card">
+					            <%= attachment_image_tag product, :image , :fill, 158, 125, fallback: "no_image.jpg", size: '180x120' ,class:'card-img-top' %>
+					            <div class="card-body">
+					                <span class="card-text">
+					                  	<%= link_to product_path(product) do %>
+					                    	<%= product.name %>
+					                  	<%end%>
+					                </span><br>
+					                <span class="card-text">
+					                 	<%= link_to owner_path(product.owner.id) do %>
+					                    	<%= product.owner.name %>
+					                  	<% end %>
+					                </span><br>
+					                <strong class="card-text"><%= product.price %> 円　</strong>
+					                <div class="card-status">
+					                      <% if product.product_status == true %>
+					                            <span class="status2">販売停止</span>
+					                          <%else%>
+					                            <span class="status">販売中</span>
+					                      <% end %>
+					                </div>
+					            </div>
+					        </div>
+							<% end %>
+						</div>
+						<div class="page">
+          					<%= paginate @products %>
+         				</div>
+					</div>
+
+
+<!-- コメント欄 -->
+					<div class="tab-pane" id="sampleContentB">
+						<% @owner.post_comments.reverse_each do |post_comment| %>
+						    <div class="comment">
+						      	<div class="comment-body bb">
+							        <div class="comment-avatar">
+							        </div>
+						        	<div class="comment-text">
+							          	<div class="comment-author clearfix">
+										<%= post_comment.user.name %>
+								            <span class="comment-meta">
+								              <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+								              </span>
+								            </span>
+
+												<script type="text/javascript">
+												//ページが読み込まれた時にjqueryの処理を実行します。
+												$("document").ready(function() {
+												  $('#star-assess<%= post_comment.id %>').raty({
+												    size: 36,
+												   starOff: '<%= asset_path("star-off.png") %>',
+												   starOn: '<%= asset_path("star-on.png") %>',
+												   starHalf: '<%= asset_path("star-half.png") %>',
+												    half: true,
+												    readOnly: true,
+												    score: '<%= post_comment.assess %>',
+												    //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+												  });
+												  });
+												</script>
+												<div id="star-assess<%= post_comment.id %>">
+												</div>
+								          	<div class="comment-entry"><%= post_comment.comment %>
+								          	</div>
+												<% if post_comment.user == current_user %>
+									            <div>
+									            	<!-- カッコの中でオーナーの情報とコメントの情報を渡す -->
+									              <%= link_to "削除", owner_post_comment_path(post_comment.owner, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+									            </div>
+							         			<% end %>
+							         	</div>
+						        	</div>
+						      	</div>
+						    </div>
+						<% end %>
+
+						<% if user_signed_in? %>
+							<div class="comment-form">
+								<%= form_for [@owner, @post_comment] ,url:owner_post_comments_path(@owner) do |f| %>
+								  	<div class="row">
+								    	<div class="col-sm-12">
+	<!-- 星評価部分 -->
+								    		<div id="star" class="form-group">
+								    			<%= f.label :assess%>
+								    			<%= f.hidden_field :assess, id: :review_star%>
+	                                		</div>
+								      			<%= f.text_area :comment, rows:'5', class: "form-control",placeholder: "コメント" %>
+								    	</div>
+								  	</div>
+								  	<div class="comment-btn">
+								  		<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+								  	</div>
+								<% end %>
+							</div>
+						<%end%>
+					</div>
 				</div>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-2">
+	    		<h3>ソート</h3>
+	  		</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-3">
-    		<h3>ソート</h3>
-  		</div>
-	</div>
+</div>
+<br>
+<br>
+
+<script type="text/javascript">
+$('#star').raty({
+   size: 36,
+   starOff: '<%= asset_path("star-off.png") %>',
+   starOn: '<%= asset_path("star-on.png") %>',
+   starHalf: '<%= asset_path("star-half.png") %>',
+   // ポストコメントに保存
+   scoreName: 'post_comment[assess]',
+   half: true,
+});
+</script>
+
+

@@ -1,11 +1,12 @@
-
+<div class="container">
 	<div class="row">
 	    <div class="col-md-9 col-sm-9 col-xs-9">
-	        <h1>カート</h1>
+	        <h3>カート</h3>
+	        <div class="divline"></div>
 	        	<div class="flex">
 					<% @cart_items.each do |cart_item| %>
 		                <div class="card">
-							<%= attachment_image_tag cart_item.product, :image, style:"width: 158px; height: 120px; bottom: 5px;" ,class:'card-img-top'%>
+							<%= attachment_image_tag cart_item.product, :image, style:"width: 180px; height: 130px; bottom: 5px;" ,fallback: "no_image.jpg",class:'card-img-top'%>
 		                    	<div class="card-body">
 		                			<span class="card-text">
 		                	    		<%=cart_item.product.name%><br>
@@ -14,8 +15,8 @@
 											<%=f.select :count,(1..10).each{ |i| p [i]} %>
 											<%= f.submit '変更', class: "btn-sm btn-success cart-btn"%>
 										<% end %>
-										<div class="card-price">
-										小計：<%= (cart_item.product.price * cart_item.count).to_i.to_s(:delimited )%>円 <br>
+										<div class="card-status">
+										小計：<%= (cart_item.product.price * cart_item.count).to_i.to_s(:delimited )%>円 
 										<%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, data: { confirm:"Are you sure?"},  class: "btn-sm btn-danger"%>
 										</div>
 									</span><br>
@@ -23,10 +24,12 @@
 		    			</div>
 		        	<% end %>
 	     		</div>
+	     	<div class="divline"></div>
 	 	</div>
 	</div>
 	<br>
 	<br>
+
 	<div class="row">
 		<div class="flex">
 			<div>
@@ -41,3 +44,4 @@
 		</div>
 	</div>
 <br><br>
+</div>

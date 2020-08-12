@@ -1,20 +1,134 @@
-<h1>Admin::Owners#show</h1>
-<p>Find me in app/views/admin/owners/show.html.erb</p>
-	<p>店舗写真</p>
-		<%= attachment_image_tag @owner, :image ,:fill,100,70,fallback: "no_image.jpg", size: '100x70' %>
-	<p>カテゴリー</p>
-		<%= @owner.category.name %>
-	<p>店舗名</p>
-		<%= @owner.name %>
-	<p>平均利用額</p>
-		<%= @owner.average_price %>
-	<p>店舗紹介</p>
-		<%= @owner.introduce %>
-	<p>郵便番号</p>
-		<%= @owner.postcode %>
-	<p>所在地</p>
-		<%= @owner.address %>
-	<p>電話番号</p>
-		<%= @owner.phone_number %>
+<div class="container">
+	<h3>店舗詳細</h3>
+	    
 
-	<%= link_to "編集する", edit_admin_owner_path %>
+	    <div class="row">
+	    	<div class="col-md-9 col-sm-9 col-xs-9">
+				<div class="owner-card flex">
+						<div class="owner-image">
+			            	<%= attachment_image_tag @owner, :image , :fill, 300, 200, fallback: "no_image.jpg", size: '300x200' ,class:'card-img-top' %>
+			            </div>
+			            <div class="owner-text">
+				            <div>
+				            	【<%= @owner.category.name %>】
+									<%= @owner.name %>
+								TEL：<%= @owner.phone_number %>
+				            </div>
+				            <div class="owner-introduce">
+						    	<%= @owner.introduce %>
+					    	</div>
+					    	<div>
+					    		平均利用額：<%= @owner.average_price %>円
+					    	</div>
+					    	<div>
+					    		<%= @owner.postcode %>
+					    	</div>
+					    	<div>
+					    		<%= @owner.address %>
+					    	</div>
+					    </div>
+					    <div class="status">
+					    <%= link_to edit_admin_owner_path(@owner.id) do %>
+					            編集する
+					    <% end %>
+					    </div>
+
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-3">
+				<div class="owner-map">
+					<%= render 'owners/map', owner: @owner %>
+				</div>
+			</div>
+		</div>
+
+
+
+	<br>
+
+
+
+		<div class="row">
+			<div class="col-md-9 col-sm-9 col-xs-9">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#sampleContentA" data-toggle="tab">商品一覧</a></li>
+					<li><a href="#sampleContentB" data-toggle="tab">コメント(<%= @owner.post_comments.count %>件)</a></li>
+				</ul>
+				<br>
+				<div class="tab-content">
+					<div class="tab-pane active" id="sampleContentA">
+					    <div class="flex">
+							<% @products.each do |product| %>
+							<div class="card">
+					            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '180x130' ,class:'card-img-top' %>
+					            <div class="card-body">
+					                <span class="card-text">
+					                  <%= link_to product_path(product) do %>
+					                    <%= product.name %>
+					                  <%end%>
+					                </span><br>
+					                <span class="card-text">
+					                  <%= link_to owner_path(product.owner.id) do %>
+					                    <%= product.owner.name %>
+					                  <% end %>
+					                </span><br>
+					                <strong class="card-text"><%= product.price %> 円　</strong>
+					                <div class="card-status">
+					                      <% if product.product_status == true %>
+					                            <span class="status2">販売停止</span>
+					                          <%else%>
+					                            <span class="status">販売中</span>
+					                      <% end %>
+					                </div>
+					            </div>
+					        </div>
+							<% end %>
+						</div>
+					</div>
+					<div class="tab-pane" id="sampleContentB">
+						<ol>
+						  <% @owner.post_comments.each do |post_comment| %>
+						    <li class="comment">
+						      <div class="comment-body bb">
+						        <div class="comment-avatar"></div>
+						        <div class="comment-text">
+						          <div class="comment-author clearfix">
+						            <a href="#" class="link-author"><%= post_comment.user.name %></a>
+						            <span class="comment-meta">
+						              <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+						            </span>
+<script type="text/javascript">
+//ページが読み込まれた時にjqueryの処理を実行します。
+$("document").ready(function() {
+  $('#star-assess<%= post_comment.id %>').raty({
+    size: 36,
+   starOff: '<%= asset_path("star-off.png") %>',
+   starOn: '<%= asset_path("star-on.png") %>',
+   starHalf: '<%= asset_path("star-half.png") %>',
+    half: true,
+    readOnly: true,
+    score: '<%= post_comment.assess %>',
+    //注目ポイント↑ 平均点を算出し、round関数で切り上げ
+  });
+  });
+</script>
+
+<div id="star-assess<%= post_comment.id %>"></div>
+						          
+						          <div class="comment-entry"><%= post_comment.comment %></div>
+						           <%= link_to "削除", owner_post_comment_path(post_comment.owner, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+						        </div>
+						    </div>
+						      </div>
+						  <% end %>
+						</ol>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-3 col-sm-3 col-xs-3">
+	    		<h3>ソート</h3>
+	  		</div>
+		</div>
+</div>

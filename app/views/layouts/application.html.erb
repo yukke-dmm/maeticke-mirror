@@ -5,86 +5,97 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+<!-- fontawesomeはスタイルシートより前 -->
+    <script src="https://kit.fontawesome.com/5ac4675677.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
   </head>
 
   <body>
+    
+<!-- loadingお試し -->
+<!-- <div class="loader-wrap">
+  <div class="loader">Loading...</div>
+</div> -->
+
       <header>
-        <nav class="">
+        <nav class="site-header">
           <div class="collapse navbar-collapse" id="navbarEexample1">
-            <ul class="nav navbar-nav">
-              <li>
+          <span class="homeicon">
+            <% if user_signed_in? %>
                 <%= link_to root_path do %>
                   <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
                 <% end %>
-              </li>
+            <% elsif owner_signed_in? %>
+                <%= link_to owner_homes_top_path do %>
+                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
+            <% elsif admin_signed_in? %>
+                <%= link_to admin_homes_top_path do %>
+                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
+            <% else %>
+                <%= link_to root_path do %>
+                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                <% end %>
+            <% end %>
+          </span>
+
+
+
+            <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
                 <p class="navbar-text"><%= current_user.name %>さん</p>
 
-                <li><%= link_to "カート", cart_items_path %></li>
-                <li><%= link_to "チケット一覧", order_details_path %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-                <li><%= link_to "退会処理", users_quit_path %></li>
+                <li><%= link_to cart_items_path do %><i class="fas fa-shopping-cart"> カート</i><%end%></li>
+                <li><%= link_to order_details_path do %><i class="fas fa-ticket-alt"> マイチケット</i><%end%></li>
+                <li><%= link_to destroy_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt"> ログアウト</i><%end%></li>
+                <li><%= link_to users_quit_path do %><i class="fas fa-user-slash"> 退会処理</i><%end%></li>
               <% elsif owner_signed_in? %>
                 <p class="navbar-text"><%= current_owner.name %>さん</p>
-                <li><%= link_to "商品一覧", owner_products_path %></li>
-                <li><%= link_to "ジャンル一覧", owner_genres_path %></li>
-                <li><%= link_to "マイページ", owner_owner_path(current_owner) %></li>
-                <li><%= link_to "ログアウト", destroy_owner_session_path, method: :delete %></li>
-                <li><%= link_to "退会処理", owner_owners_quit_path(current_owner) %></li>
+                <li><%= link_to owner_products_path do %><i class="fas fa-gifts"> 商品一覧</i><%end%></li>
+                <li><%= link_to owner_genres_path do%><i class="fas fa-sitemap"> ジャンル一覧</i><%end%></li>
+                <li><%= link_to owner_owner_path(current_owner) do%><i class="fas fa-store"> マイページ</i><%end%></li>
+                <li><%= link_to destroy_owner_session_path, method: :delete do%><i class="fas fa-sign-out-alt"> ログアウト</i><%end%></li>
+                <li><%= link_to owner_owners_quit_path(current_owner) do %><i class="fas fa-user-slash"> 退会処理</i><%end%></li>
               <% elsif admin_signed_in? %>
-                <li>管理者</li>
-                <li><%= link_to "オーナー一覧", admin_owners_path %></li>
-                <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-                <li><%= link_to "カテゴリー一覧", admin_categories_path %></li>
-                <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+                <p class="navbar-text">管理者</p>
+                <li><%= link_to admin_owners_path do%><i class="fas fa-store"> オーナー</i><%end%></li>
+                <li><%= link_to admin_users_path do%><i class="fas fa-users"> ユーザー</i><%end%></li>
+                <li><%= link_to admin_categories_path do%><i class="fas fa-sitemap"> カテゴリー</i><%end%></li>
+                <li><%= link_to destroy_admin_session_path, method: :delete do%><i class="fas fa-sign-out-alt"> ログアウト</i><%end%></li>
               <% else %>
                 <p class="navbar-text">ようこそ ゲスト さん。</p>
-                <li><%= link_to "会員新規登録", new_user_registration_path %></li>
-                <li><%= link_to "会員ログイン", new_user_session_path %></li>
-                <li><%= link_to "オーナー新規登録", new_owner_registration_path %></li>
-                <li><%= link_to "オーナーログイン", new_owner_session_path %></li>
+                <li><%= link_to new_user_registration_path do%><i class="fas fa-user-plus"> 新規登録</i><%end%></li>
+                <li><%= link_to new_user_session_path do%><i class="fas fa-sign-in-alt"> 会員ログイン</i><%end%></li>
+                <li><%= link_to new_owner_registration_path do%><i class="fas fa-handshake">　オーナー新規登録</i><%end%></li>
+                <li><%= link_to new_owner_session_path do%><i class="fas fa-sign-in-alt"> オーナーログイン</i><%end%></li>
               <% end %>
             </ul>
           </div>
         </nav>
+      </header>
 <!-- スライドショー -->
 <%= render 'homes/slide' %>
 <!-- 中間ヘッダー -->
         <nav class="">
           <div class="collapse navbar-collapse" id="navbarEexample1">
             <ul class="nav navbar-nav">
-              <% if user_signed_in? %>
-                <li><%= link_to "商品一覧", products_path %></li>
-                <li><%= link_to "店舗一覧", owners_path %></li>
-              <% elsif owner_signed_in? %>
-                <li><%= link_to "商品一覧", owner_products_path %></li>
-                <li><%= link_to "ジャンル一覧", owner_genres_path %></li>
-              <% elsif admin_signed_in? %>
-                <li>管理者</li>
-                <li><%= link_to "オーナー一覧", admin_owners_path %></li>
-                <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-                <li><%= link_to "カテゴリー一覧", admin_categories_path %></li>
-              <% else %>
-                <p class="navbar-text">ようこそ ゲスト さん。</p>
-                <li><%= link_to "商品一覧", products_path %></li>
-                <li><%= link_to "店舗一覧", owners_path %></li>
-              <% end %>
+                <li><%= link_to products_path do%><i class="fas fa-gifts"> 商品一覧</i><%end%></li>
+                <li><%= link_to owners_path do%><i class="fas fa-store"> 店舗</i><%end%></li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="検索キーワード">
-              </div>
-              <button type="submit" class="btn btn-default">検索</button>
-            </form>
+                <%#= render 'products/form', product: @products %>
           </div>
         </nav>
-      </header>
-    <div class="container"><%= yield %></div>  
+
+
+
+     <%= yield %>
   </body>
-  
   <footer>
-    © <%= link_to "Maeticke", new_admin_session_path %>.inc
+
+    © MAECHIKE<%= link_to ".", new_admin_session_path %>.inc
+    <%= link_to "お問い合わせ", inquiry_index_path %>
   </footer>
 </html>

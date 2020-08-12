@@ -1,9 +1,8 @@
 
 
-
 // $(function(){
 // $("document").ready(function(){
-$("document").ready(function() {
+$(function() {
     $(".theTarget").skippr({
  // スライドショーの変化（"fade" or "slide"）
   transition : 'fade',
@@ -18,7 +17,7 @@ $("document").ready(function() {
   // ナビゲーション矢印の表示（trueで表示）
   arrows : true,
   // スライドショーの自動再生（falseで自動再生なし）
-  autoPlay : true,
+  autoPlay :true,
   // 自動再生時のスライド切替間隔（ミリ秒）
   autoPlayDuration : 2000,
   // キーボードの矢印キーによるスライド送りの設定（trueで有効）
@@ -27,6 +26,69 @@ $("document").ready(function() {
   hidePrevious : false});
 });
 // オプションを指定してSkipprの実行
+
+
+
+// スクロールで起こる
+$(window).scroll(function(){
+// 変数を宣言
+ var windowHeight = $(window).height(),
+     topWindow = $(window).scrollTop();
+// 繰り返し行うよ
+ $('.animation').each(function(){
+// 変数ターゲットポジションは上から
+  var targetPosition = $(this).offset().top;
+// トップウインドウがターゲットポジション引くウインドウの高さ＋100なら以下を実行
+  if(topWindow > targetPosition - windowHeight + 200){
+// fadeInDown動作
+   $(this).addClass("fadeInDown");
+  }
+ });
+});
+// 参考文献・・・https://theorthodoxworks.com/web-design/scrollanimation/
+
+
+
+
+// // ローディング
+// $(function(){
+//   var loader = $('.loader-wrap');
+
+//   //ページの読み込みが完了したらアニメーションを非表示
+//   $(window).on('load',function(){
+//     loader.fadeOut();
+//   });
+
+//   //ページの読み込みが完了してなくても3秒後にアニメーションを非表示にする
+//   setTimeout(function(){
+//     loader.fadeOut();
+//   },3000);
+// });
+
+
+
+// ハンバーガーうまくいかなかった
+// $(function() {
+//   $('.menu-trigger').on('click', function(event) {
+//     $(this).toggleClass('active');
+//     $('#sp-menu').fadeToggle();
+//     event.preventDefault();
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ここから下を動かすと、退会時にもスライドを入れようとするが故にログアウトできなくなる。

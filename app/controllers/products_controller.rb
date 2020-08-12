@@ -4,7 +4,23 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.page(params[:page]).per(12)
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct: true).page(params[:page]).per(12)
+    # .result(distinct: true)
+  end
+
+  def search
+  #     if params[:q].present?
+  #   # 検索フォームからアクセスした時の処理
+  #     @search = Item.ransack(search_params)
+  #     @items = @search.result
+  #   else
+  #   # 検索フォーム以外からアクセスした時の処理
+  #     params[:q] = { sorts: 'id desc' }
+  #     @search = Item.ransack()
+  #     @items = Item.all
+  #   end
   end
 
   # GET /products/1
@@ -64,5 +80,10 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :introduce, :image_id, :price, :genre_id, :product_status, :delete_flag)
+    end
+ 
+    def search_params
+    params.require(:q).permit(:sorts)
+    # 他のパラメーターもここに入れる
     end
 end

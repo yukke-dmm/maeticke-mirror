@@ -1,42 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-sm-10 col-xs-10">
+      <h3>商品一覧</h3>
+      <div class="divline"></div>
 
-<div class="row">
-  <div class="col-md-9 col-sm-9 col-xs-9">
-    <h1>商品一覧</h1>
-
-      <div class="flex">
-        <% @products.each do |product| %>
-          <div class="card">
-            <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '158x120' ,class:'card-img-top' %>
-              <div class="card-body">
-                <span class="card-text">
-                  <%= link_to product_path(product) do %>
-                    <%= product.name %>(<%= product.genre.name %>)
-                  <%end%>
-                </span><br>
-                <span class="card-text">
-                  <%= link_to owner_path(product.owner.id) do %>
-                    <%= product.owner.name %>
-                  <% end %>
-                </span>
-                <span class="card-introduce">
-                  <p>　<%= product.introduce %></p>
-                </span>
-                <div class="card-price">
-                  <%= product.price %> 円　
-                      <% if product.product_status == true %>
-                            <span class="status2">販売停止</span>
-                          <%else%>
-                            <span class="status">販売中</span>
-                      <% end %>
-                </div>
+        <div class="flex">
+          <% @products.reverse_each do |product| %>
+            <div class="card">
+              <%= attachment_image_tag product, :image , :fill, 158, 135, fallback: "no_image.jpg", size: '180x130' ,class:'card-img-top' %>
+                <div class="card-body">
+                  <span class="card-text">
+                    <%= link_to product_path(product) do %>
+                    <%= product.name %>
+                    <%end%>
+                  </span><br>
+                  <span class="card-text">
+                    <%= link_to owner_path(product.owner.id) do %>
+                      <%= product.owner.name %>
+                    <% end %>
+                  </span>
+                  <br>
+                  <span class="card-introduce">
+                    <p>購入可能期限<br><%= (product.updated_at+product.limit.days).strftime("%Y/%m/%d") %>まで</p>
+                  </span>
+                  <strong class="card-text"><%= product.price %> 円　</strong>
+                  <div class="card-status">
+                        <% if product.product_status == true %>
+                              <span class="status2">販売停止</span>
+                            <%else%>
+                              <span class="status">販売中</span>
+                        <% end %>
+                        <% if user_signed_in? %>
+                          <% if product.favorited_by?(current_user) %>
+                            <%= link_to product_favorites_path(product), method: :delete do %>
+                              <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                              <%= product.favorites.count %>
+                            <% end %>
+                          <% else %>
+                            <%= link_to product_favorites_path(product), method: :post do %>
+                              <i class="fa fa-heart-o" aria-hidden="true"></i>
+                              <%= product.favorites.count %>
+                            <% end %>
+                          <% end %>
+                        <%end%>
+                  </div>
+              </div>
             </div>
+          <% end %>
+
+        </div>
+          <div class="page">
+          <%= paginate @products %>
           </div>
-        <% end %>
-      </div>
+    </div>
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <h3>商品検索</h3>
+                  <%= render 'products/form', product: @products %>
+    </div>
   </div>
-  <div class="col-md-3 col-sm-3 col-xs-3">
-    <h1>ソート</h1>
-  </div>
+  <br>
 </div>
-<br>
