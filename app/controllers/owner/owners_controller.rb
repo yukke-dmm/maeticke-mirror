@@ -10,7 +10,7 @@ class Owner::OwnersController < ApplicationController
   end
 
   def edit
-  	@owner = current_owner　
+  	@owner = Owner.find(params[:id])
   end
 
   def update

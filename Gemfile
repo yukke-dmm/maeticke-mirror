@@ -86,6 +86,8 @@ end
 gem 'ransack'
 
 gem 'geocoder'
+
+
 # 使わなかった
 gem 'rails-i18n'
 gem 'enum_help'
