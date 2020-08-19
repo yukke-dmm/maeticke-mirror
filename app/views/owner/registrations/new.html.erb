@@ -1,64 +1,89 @@
-<h2>Sign up</h2>
+<div class="container">
+    <div class="row">　
+
+
+
+<h3>新規オーナー登録</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "owner/shared/error_messages", resource: resource %>
-
-
-  <div class="field">
-    <%= f.label "店舗画像" %><br />
+<div class="col-sm-4">
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">店舗写真</label>
+                  <span class="fas fa-camera" aria-hidden="true"></span>
     <%= f.file_field :image, placeholder: "" %>
   </div>
 
-  <h4>カテゴリー</h4>
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">Category</label>
+                  <span class="fas fa-sitemap" aria-hidden="true"></span><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択して下さい" %>
-
-  <div class="field">
-    <%= f.label "店舗名" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
   </div>
 
-  <div class="field">
-    <%= f.label "店舗紹介" %><br />
-    <%= f.text_field :introduce, autofocus: true, autocomplete: "introduce" %>
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">Name</label>
+                  <span class="fas fa-user" aria-hidden="true"></span>
+    <%= f.text_field :name, autofocus: true, class:"form-control", id:"inputName", placeholder:"名前" %>
   </div>
 
-  <div class="field">
-    <%= f.label "郵便番号" %><br />
-    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">Introduce</label>
+                  <span class="fas fa-file-alt" aria-hidden="true"></span>
+    <%= f.text_area :introduce, autofocus: true, class:"form-control", id:"inputIntroduce", placeholder:"店舗紹介" %>
+  </div>
+</div>
+
+<div class="col-sm-4">
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">PostCode</label>
+                  <span class="fas fa-mail-bulk" aria-hidden="true"></span>
+    <%= f.text_field :postcode, autofocus: true, class:"form-control", id:"inputPostcode", placeholder:"郵便番号" %>
   </div>
 
-  <div class="field">
-    <%= f.label "所在地" %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">Address</label>
+                  <span class="fas fa-map-marker-alt" aria-hidden="true"></span>
+    <%= f.text_field :address, autofocus: true, class:"form-control", id:"inputAddress", placeholder:"所在地"%>
   </div>
 
-  <div class="field">
-    <%= f.label "電話番号" %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">PhoneNumber</label>
+                  <span class="fas fa-phone" aria-hidden="true"></span>
+    <%= f.text_field :phone_number, autofocus: true, class:"form-control", id:"inputPhoneNumber", placeholder:"電話番号" %>
   </div>
 
-  <div class="field">
-    <%= f.label "平均利用額" %><br />
-    <%= f.text_field :average_price, autofocus: true, autocomplete: "average_price" %>
+                   <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">Average</label>
+                  <span class="fas fa-money-check-alt" aria-hidden="true"></span>
+    <%= f.text_field :average_price, autofocus: true,  class:"form-control", id:"inputAverage-price", placeholder:"平均利用額"  %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="col-sm-4">
+                  <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputEmail">Email</label>
+                  <span class="fa fa-envelope form-control-icon" aria-hidden="true"></span>
+                  <%= f.email_field :email, autofocus: true, class:"form-control", id:"inputEmail", placeholder:"メールアドレス"%>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+                </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+                <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputPassword">Password</label>
+                  <!-- aria-hiddenはスクリーンリーダーで読み取らないようにする。余計な動作を消す -->
+                  <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
+                  <%= f.password_field :password, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード" %>
+
+                </div>
+
+                <div class="form-group has-icon">
+                  <label class="control-label sr-only" for="inputPassword">Password</label>
+                  <!-- aria-hiddenはスクリーンリーダーで読み取らないようにする。余計な動作を消す -->
+                  <span class="fa fa-lock form-control-icon" aria-hidden="true"></span>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class:"form-control", id:"inputPassword", placeholder:"パスワード再入力" %>
+                </div>
+</div>
+
+</div>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
@@ -66,3 +91,7 @@
 <% end %>
 
 <%= render "owner/shared/links" %>
+
+
+</div>
+</div>
