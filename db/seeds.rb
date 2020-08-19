@@ -10,3 +10,13 @@ Admin.create!(
 	email: 'aaa@aaa',
 	password: 'aaaaaa',
 )
+
+# User.create!(
+# 	email: 'yamada@yamada',
+# 	password: 'yamada',
+# 	)
+
+# Owner.create!(
+# 	email: 'nagano@nagano',
+# 	password: 'nagano',
+# 	)
