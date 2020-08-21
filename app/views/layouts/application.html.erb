@@ -25,19 +25,19 @@
           <span class="homeicon">
             <% if user_signed_in? %>
                 <%= link_to root_path do %>
-                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                  <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% elsif owner_signed_in? %>
                 <%= link_to owner_homes_top_path do %>
-                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                  <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% elsif admin_signed_in? %>
                 <%= link_to admin_homes_top_path do %>
-                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                  <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% else %>
                 <%= link_to root_path do %>
-                  <%= image_tag "maeticke2.png", alt: "マエチケ", width: "120px"%>
+                  <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% end %>
           </span>
