@@ -9,12 +9,12 @@ class ProductsController < ApplicationController
 
     if params[:q].present?
     # 検索フォームからアクセスした時の処理
-      @q = Product.ransack(params[:q])
-      @products = @q.result(distinct: true).page(params[:page]).per(12)
+      @serch = Product.ransack(params[:q])
+      @products = @serch.result(distinct: true).page(params[:page]).per(12)
     else
     # 検索フォーム以外からアクセスした時の処理
       params[:q] = { sorts: 'id desc' }
-      @q = Product.ransack(params[:sorts])
+      @serch = Product.ransack(params[:sorts])
       @products = Product.all.page(params[:page]).per(12)
     end
   end
