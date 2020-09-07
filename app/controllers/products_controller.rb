@@ -5,22 +5,31 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all.page(params[:page]).per(12)
-    @q = Product.ransack(params[:q])
-    @products = @q.result(distinct: true).page(params[:page]).per(12)
     # .result(distinct: true)
+
+    if params[:q].present?
+    # 検索フォームからアクセスした時の処理
+      @serch = Product.ransack(params[:q])
+      @products = @serch.result(distinct: true).page(params[:page]).per(12)
+    else
+    # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @serch = Product.ransack(params[:sorts])
+      @products = Product.all.page(params[:page]).per(12)
+    end
   end
 
   def search
-  #     if params[:q].present?
-  #   # 検索フォームからアクセスした時の処理
-  #     @search = Item.ransack(search_params)
-  #     @items = @search.result
-  #   else
-  #   # 検索フォーム以外からアクセスした時の処理
-  #     params[:q] = { sorts: 'id desc' }
-  #     @search = Item.ransack()
-  #     @items = Item.all
-  #   end
+    #   if params[:q].present?
+    # # 検索フォームからアクセスした時の処理
+    #   @search = product.ransack(search_params)
+    #   @products = @search.result
+    # else
+    # # 検索フォーム以外からアクセスした時の処理
+    #   params[:q] = { sorts: 'id desc' }
+    #   @search = product.ransack()
+    #   @products = product.all
+    # end
   end
 
   # GET /products/1

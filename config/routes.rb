@@ -41,9 +41,9 @@ Rails.application.routes.draw do
     # 商品にいいね機能を追加する。
     resource :favorites, only: [:create, :destroy]
     # # serchアクションを使う時ゲットでもポストでも動くよ
-    # collection do
-    #   match 'search' => 'items#search', via: [:get, :post]
-    # end
+    collection do
+      match 'search' => 'products#search', via: [:get, :post]
+    end
   end
   resources :owners, only:[:index,:show] do
     resources :post_comments, only: [:create, :destroy]
