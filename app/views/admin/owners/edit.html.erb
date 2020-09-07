@@ -44,7 +44,13 @@
 									<td>所在地：</td>
 									<td><%= f.text_field :address %></td>
 								</tr>
-								<tr>
+																<tr>
+									<td>利用許可：</td>
+									<td>
+										<%= f.radio_button :status, false %><span>未許可</span>
+    									<%= f.radio_button :status, true %><span>許可</span>
+    								</td>
+								</tr>
 
 							</table>
 							<%= f.submit "変更を保存する" %>

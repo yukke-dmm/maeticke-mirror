@@ -25,6 +25,13 @@
 					    		<%= @owner.address %>
 					    	</div>
 					    </div>
+					    	<div class="status2">
+					    		<% if @owner.status == false %>
+					    			未許可
+					    		<% else %>
+					    		    許可
+					    		<% end %>
+					    	</div>
 					    <div class="status">
 					    <%= link_to edit_owner_owner_path(@owner.id) do %>
 					            編集する
