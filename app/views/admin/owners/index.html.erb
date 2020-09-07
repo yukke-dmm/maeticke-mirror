@@ -8,6 +8,7 @@
 					<th>カテゴリー</th>
 					<th>店舗名</th>
 					<th>電話番号</th>
+					<th>ステータス</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -23,6 +24,12 @@
 							<% end %>
 				    	</td>
 				    	<td><%= owner.phone_number %></td>
+				    	<td>
+				    		<% if owner.status == false %>
+					    			未許可
+					    	<% else %>
+					    		    許可
+					    	<% end %>
 		            	</td>
 		            	<td><%= link_to "退会させる",admin_owner_path(owner.id), method: :delete, data: { confirm: '本当に退会させますか？' }, class: "label label-danger" %></td>
 					</tr>

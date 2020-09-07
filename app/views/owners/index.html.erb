@@ -5,6 +5,7 @@
     		<h3>店舗一覧</h3>
     		<div class="divline"></div>
 				<% @owners.each do |owner| %>
+				<% if owner.status == true %>
 					<div class="owner-card flex">
 						<div class="owner-image">
 							<%= link_to owner_path(owner.id) do %>
@@ -53,6 +54,7 @@ $("document").ready(function() {
 					    	</div>
 					    </div>
 				    </div>
+				    <% end %>
 				<% end %>
 		   <div class="page">
           <%= paginate @owners %>
