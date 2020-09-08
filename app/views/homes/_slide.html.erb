@@ -1,10 +1,41 @@
   <div id="container">
     <div class="theTarget">
-      <div style="background-image: url(<%= asset_path('maetickepop.png')%>)"></div>
-      <div style="background-image: url(<%= asset_path('Bakery.jpg')%>)"></div>
-<!--       <div style="background-image: url(<%= asset_path('book.jpg')%>)"></div>
-      <div style="background-image: url(<%= asset_path('cafe.jpg')%>)"></div>
-      <div style="background-image: url(<%= asset_path('gym.jpg')%>)"></div>
-      <div style="background-image: url(<%= asset_path('ryokan.jpg')%>)"></div> -->
+      <div style="background-image: url(<%= asset_path('TOP.png')%>)"></div>
+      <div style="background-image: url(<%= asset_path('capaign.png')%>)"></div>
+      <div style="background-image: url(<%= asset_path('USER.png')%>)">
+        <div class="flex">
+          <div class="user-blank"></div>
+          <div class="user-slide">
+            <div class="user-slide-text">
+              <h1>あなたの支援で<br>経済に活気を！</h1><br>
+
+              <h4>簡単新規登録はコチラ</h4><br>
+              <div class="status"><strong><%= link_to new_user_registration_path do%><i class="fas fa-user-plus">　新規会員登録</i><%end%></strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background-image: url(<%= asset_path('OWNER.png')%>)">
+        <div class="owner-slide">
+          <div class="owner-slide-text">
+            <h3><strong>まえチケ</strong>ではオーナー様の登録をお待ちしております。</h3>
+            <br>
+            <div class="portfolio-border"></div>
+            <div class="flex">
+              <div class="owner-slide-left">
+                ① コロナ禍で先行きに不安を感じる。<br>
+                ② 会計時間の短縮を図りたい。<br>
+                ③ オンライン前売り券に興味がある。<br>
+                <br>
+                ※ 登録には審査がございます。
+              </div>
+              <div class="owner-slide-right">
+                <div class="status"><strong><%= link_to new_owner_registration_path do%><i class="fas fa-handshake">　オーナー新規登録</i><%end%>
+                </strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>

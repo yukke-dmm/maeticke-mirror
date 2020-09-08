@@ -53,12 +53,65 @@ ol{
 
 /*スライドショー*/
 #container{
-	height: 500px;
+	height: 540px;
 	background-size: cover;
     background-position: center;
 }
 
+.user-blank{
+	height:440px;
+	width:440px;
+}
+.user-slide{
+	height:440px;
+	width:440px;
+	border-radius:50%;
+	margin: 50px 100px ;
+	background-color: rgba( 0, 0, 0, 0.5);
+	background-position: center;
+	text-align:center;
+}
+.user-slide-text{
+	margin: 120px auto;
+	height:200px;
+	width:300px;
+	color:white;
+}
 
+.owner-slide{
+	height: 440px;
+	width:80%;
+	margin: 50px 100px;
+	background-color: rgba( 0, 0, 0, 0.5);
+	background-position: center;
+}
+
+.owner-slide-text{
+    height:400px;
+    width:100%;
+	padding-top: 40px;
+	color: white;
+	text-align:center;
+}
+
+.owner-slide-left{
+	height: 200px;
+	width:50%;
+	margin-top:40px;
+	padding:40px;
+    color:white;
+    text-align:left;
+    font-size:20px;
+}
+.owner-slide-right{
+	height: 200px;
+	width:50%;
+	padding:100px;
+    color:white;
+    text-align:center;
+    font-size:20px;
+
+}
 /****************************************************************/
 
 
@@ -133,7 +186,7 @@ header{
 
 .portfolio-border{
     margin: 0 auto;
-    width: 200px;
+    width: 300px;
 	border-bottom:  3px solid  #EC715F;
 }
 
