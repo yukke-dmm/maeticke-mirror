@@ -24,19 +24,19 @@
           <div class="collapse navbar-collapse" id="navbarEexample1">
           <span class="homeicon">
             <% if user_signed_in? %>
-                <%= link_to root_path do %>
+                <%= link_to root_path ,data: {"turbolinks" => false} do %>
                   <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% elsif owner_signed_in? %>
-                <%= link_to owner_homes_top_path do %>
+                <%= link_to owner_homes_top_path ,data: {"turbolinks" => false} do %>
                   <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% elsif admin_signed_in? %>
-                <%= link_to admin_homes_top_path do %>
+                <%= link_to admin_homes_top_path,data: {"turbolinks" => false} do %>
                   <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% else %>
-                <%= link_to root_path do %>
+                <%= link_to root_path,data: {"turbolinks" => false} do %>
                   <%= image_tag "maeticke4-clear.png", alt: "マエチケ", height: "50px"%>
                 <% end %>
             <% end %>
