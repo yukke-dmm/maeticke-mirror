@@ -11,11 +11,11 @@ Admin.create!(
 	password: 'aaaaaa',
 )
 
-User.create!(
-	name: 'tanaka'
-	email: 'tanaka@tanaka',
-	password: 'tanaka',
-	)
+# User.create!(
+# 	name: 'tanaka',
+# 	email: 'tanaka@tanaka',
+# 	password: 'tanaka',
+# 	)
 
 # Owner.create!(
 # 	email: 'nagano@nagano',
