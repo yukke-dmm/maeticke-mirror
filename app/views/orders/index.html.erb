@@ -1,6 +1,7 @@
-<h1>Orders#index</h1>
-<p>Find me in app/views/orders/index.html.erb</p>
 <%= render 'layouts/middlebar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 col-sm-9 col-xs-9">
 <h2>注文情報確認</h2>
       <%= form_with(model: @order, url: orders_path,method: :post,local: true ) do |f| %>
       <table class="table">
@@ -30,18 +31,32 @@
         </tbody>
       </table>
 
-
-
-
-    <span>支払い方法</span>
-     <% if @order.payment_method == true %>
+<br>
+<br>
+    <span class="status">お支払い方法</span>
+                    <% if @order.payment_method == true %>
                       <span>銀行振込</span>
                         <% else %>
                       <span>クレジットカード</span><br>
                     <% end %>
+    <% end %>
 
 
-      <%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
+
+</div>
+
+<div class="col-md-3 col-sm-3 col-xs-3">
+<br>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= form_with(model: @order, url:orders_path, method: :post, local: true) do |f| %>
 
 
   <% i = 0 %>
@@ -50,6 +65,7 @@
   <% i = i + cart_item.product.price*cart_item.count %>
   <%# c = c + cart_item.count %>
   <% end %>
+
 
 
   <%= f.hidden_field :payment, :value => i  %>
@@ -61,4 +77,10 @@
 
 
 <% end %>
+</div>
+</div>
 
+</div>
+
+<br>
+<br>
