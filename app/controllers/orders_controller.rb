@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   	@order = Order.new
   end
 
-  def index
+  def index 
   	@order = Order.new(order_params)
     @user = current_user
     @cart_item = @user.cart_items.all

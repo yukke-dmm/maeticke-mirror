@@ -49,7 +49,8 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
   resources :cart_items,only:[:index,:create,:update,:destroy]
-  resources :orders, only:[:new,:index,:create]
+  resources :orders, only:[:new,:create]
+  post "orders/index" => "orders#index"
   get 'orders/fin'
   resources :order_details, only:[:index,:show,:update]
   get 'users/quit'
