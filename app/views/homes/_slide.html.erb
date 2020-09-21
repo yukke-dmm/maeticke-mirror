@@ -1,11 +1,13 @@
   <div id="container">
-    <div class="theTarget">
+    <div class="theTarget"> 
       <div style="background-image: url(<%= asset_path('TOP.png')%>)"></div>
+
       <div style="background-image: url(<%= asset_path('capaign.png')%>)"></div>
+
       <div style="background-image: url(<%= asset_path('USER.png')%>)">
-        <div class="flex"> 
-          <div class="user-blank"></div>
-          <div class="user-slide">
+        <div class="row"> 
+          <div class="user-blank col-md-6 col-sm-6 col-xs-6"></div>
+          <div class="user-slide col-md-6 col-sm-6 col-xs-6">
             <div class="user-slide-text">
               <h1>あなたの支援で<br>経済に活気を！</h1><br>
 
@@ -15,6 +17,7 @@
           </div>
         </div>
       </div>
+
       <div style="background-image: url(<%= asset_path('OWNER.png')%>)">
         <div class="owner-slide">
           <div class="owner-slide-text">
