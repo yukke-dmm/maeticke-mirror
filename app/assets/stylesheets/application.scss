@@ -59,16 +59,21 @@ ol{
 }
 
 .user-blank{
-	height:440px;
-	width:440px;
+	height:80%;
+	width:80%;
 	margin: 50px 50px ;
 	background-color:pink;
 }
+
+.user-box{
+	width:540px;
+	height:540px;
+}
 .user-slide{
-	height:440px;
-	width:440px;
+	height:80%;
+	width:80%;
 	border-radius:50%;
-	margin: 50px 100px ;
+	margin: 50px 50px ;
 	background-color: rgba( 0, 0, 0, 0.5);
 	background-position: center;
 	text-align:center;
