@@ -3,6 +3,8 @@
             <ul class="nav navbar-nav">
                 <li><%= link_to products_path do%><i class="fas fa-gifts"> 商品一覧</i><%end%></li>
                 <li><%= link_to owners_path do%><i class="fas fa-store"> 店舗</i><%end%></li>
+                <li><%= link_to "お問い合わせ", inquiry_index_path %>
+                </li>
             </ul>
                 <%#= render 'products/form', product: @products %>
           </div>
